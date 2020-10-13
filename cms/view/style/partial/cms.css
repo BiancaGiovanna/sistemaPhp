@@ -1,0 +1,137 @@
+#painelControle{
+    width: 75%;
+    height: 90%;
+}
+header{
+    width: 100%;
+    height: 18%;
+    border: 2px solid black;
+    border-radius: 10px 10px 0px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+header h1{
+    margin-right: 150px;
+}
+#logoCms img{
+    width: 150px;
+    height: 90px;
+}
+#menu{
+    width: 100%;
+    height: 20%;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btnFuncitonAdm{
+    width: 175px;
+    height: 90px;
+    display: inline;
+    justify-content: center;
+    align-items: center;
+}
+.btnStyle{
+    background-color: transparent;
+    border: none;
+}
+.btnStyle:hover{
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: rgba(198, 198, 198, 1.0);
+}
+
+.btnStyle img{
+    width: 100%;
+    height: 100%;
+}
+#menu .menuBtn{
+    outline-style: none;
+    width: 70px;
+    height: 60px;
+    margin-left: 50px;
+}
+.titleBtn{
+    margin-left: 15px;
+}
+
+.user{
+    width: 250px;
+    height: 75px;
+    margin-left: 15px;
+    display: inline;
+
+}
+#userName{
+    margin-top: -10px;
+}
+#userLoggout{
+    margin-left: 140px;
+    margin-top: -5px;
+    text-decoration: underline
+}
+
+#functionAdm{
+    width: 100%;
+    height: 55%;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.listAdm{
+    width: 100%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.listaConteudo {
+    width: 500px;
+    height: 250px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+  }
+  .listaConteudo a:link, a:visited, a:active{
+    text-decoration: none;
+    color: black;
+  }
+  .item{
+    width: 150px;
+    height: 50px;
+    border-radius: 10px;
+    padding-top: 10px;
+    margin-left: 10px;
+    text-align: center;
+}
+.btnItem{
+    background-color: rgba(230, 230, 230, 1);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    margin-left: 10px;
+
+    text-decoration: none;
+}
+.btnItem:hover{
+    background-color: rgba(198, 198, 198, 1.0);
+}
+footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 10%;
+    border: 2px solid black;
+    border-radius: 0px 0px 10px 10px;
+}
+footer #dev{
+    font-weight: 700;
+}
+footer #name{
+    font-weight: 400;
+}

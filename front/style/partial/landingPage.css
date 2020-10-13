@@ -1,0 +1,406 @@
+nav{
+    position: fixed;
+    margin-left: 1190px; 
+}
+
+.btnSociais{
+    width: 80px;
+    height: 80px;
+
+    margin-bottom: 15px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#btnFace{
+    background-color: #3b5998;
+}
+#btnInsta{
+    background-color: #405DE6;
+}
+#btnTwitter{
+    background-color: #1DA1F2;
+}
+
+.btnSociais img{
+    width: 50px;
+    height: 50px;
+    display: flex;
+}
+.btnSociais:hover{
+    transform: translateY(-5px);
+    box-shadow: 5px 5px 5px #f53838;
+}
+.sliderLandingPage{
+    width: 1150px;
+    height: 300px;
+    margin-top: 90px;
+    margin-left: 15px;
+}
+.divProdutos{
+    width: 1150px;
+    min-height: 1000px;
+    height: inherit;
+    margin-top: 10px;
+    margin-left: 15px;
+    display: flex;
+}
+#lateralMenu {
+    border: solid 1px #000000;
+    border-radius: 10px;
+    width: 200px;
+    min-height: 600px;
+    height: 97%;
+    float: left;
+    padding-top: 5px;
+}
+.items {
+    box-sizing: border-box;
+    width: inherit;
+    height: 60px;
+    text-align: center;
+    margin-bottom: 5px;
+    padding-top: 15px;
+    padding-left: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    transition: all 0.9s;
+    cursor: pointer;
+}
+.items:hover{
+    border-bottom: solid 1px #000000;
+    border-right: solid 1px #000000;
+    border-radius: 7px;
+    box-shadow: 5px 3px 8px rgb(0, 0, 0);
+    transition: 0.6s;
+    background-color: var(--color-primary-button);
+}
+.subItems{
+    width: 500px;
+    height: 120px;
+    background-color: rgb(248, 248, 248, 0.87);
+    font-size: 20px;
+    margin-left: 180px;
+    margin-top: -40px;
+    font-weight: bold;
+    display: none;
+    border-radius: 10px;
+    border: solid 1px #000000;
+}
+.items:hover> .subItems{
+    display: block;
+    position: absolute;
+}
+.subItems ul li{
+    padding-top: 7px;
+    padding-bottom: 5px;
+    list-style: none;
+}
+.subItems ul li:hover{
+    color: var(--color-secondary-button-menu);
+}
+
+.divPesquisa{
+    display: inline;
+    align-items: center;
+    justify-content: center;
+}
+
+.divPesquisa span{
+    font-size: 2.2rem;
+}
+.barraPesquisa{
+    width: 900px;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+#pesquisa{
+    width: 500px;
+    height: 50px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+#btnBuscar{
+    width: 100px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#btnBuscar:hover{
+    background-color: var(--color-primary-button);
+    color: var(--color-button-text);
+    cursor: pointer;
+}
+.listaProdutosLinha1{
+    width: 900px;
+    height: 450px;
+    margin-bottom: 15px;
+    display: flex;
+    padding-left: 15px;
+}
+.listaProdutosLinha2{
+    width: 900px;
+    height: 475px;
+    margin-top: 15px;
+    display: flex;
+    padding-left: 15px;
+}
+.vendaProduto{
+    width: 300px;
+    height: 425px;
+    margin-top: 15px;
+    margin-left: 15px;
+    border-radius: 10px;
+    border: 1px solid #000000;
+}
+.descProduto{
+    width: 100px;
+    height: 90px;
+    margin-bottom: 35px;
+    margin-left: 10px;
+    font-size: 2.2rem;
+}
+
+.imageProduto{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+
+}
+.imageProduto img{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+.btnSaibaMais{
+    width: 150px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 105px;
+    cursor: pointer;
+}
+
+.preco{
+    color: var(--color-secondary-button);
+}
+.conteudo h1{
+    display: inline;
+    padding-left: 20px;
+}
+.divProdutosDestaque{
+    width: 1150px;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.produtoDestaque{
+    width: 300px;
+    height: 400px;
+}
+
+.imageProdutoDestaque{
+    width: 75%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 25px;
+}
+.imageProdutoDestaque img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.produtoDestaque span{
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.produtoDestaque .btnSaibaMais{
+    margin-left: 75px;
+}
+.divprodutoPromocao{
+    width: 1150px;
+    min-height: 700px;
+    height: inherit;
+    /* border: 1px solid #000; */
+}
+.produtoPromocao{
+    width: 300px;
+    height: 400px;
+    margin-top: 15px;
+    margin-left: 15px;
+    border-radius: 10px;
+    border: 1px solid #000000;
+}
+.produtoPromocao .btnSaibaMais{
+    margin-left: 50px;
+}
+.promocaoline{
+    width: 1100px;
+    height: 500px;
+    padding-left: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.alinhamentoPromocao{
+    padding-left: 10px;
+
+}
+.precoAntigo{
+    color: #717572;
+    padding-right: 50px;
+}
+.produtoPromocao .btnSaibaMais{
+    margin-top: 40px;
+}
+.precoNegrito{
+    font-weight: bold;
+}
+#empresa{
+    width: 1300px;
+    height: inherit;
+    display: flexbox;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+}
+#textoEmpresa{
+    width: 60%;
+    height: 450px;
+
+}
+
+input{
+    height: 30px;
+    border-radius: 10px; 
+} 
+button{
+    border-radius: 10px;
+    background-color: var(--color-primary-button);
+    color: var(--color-button-text);
+
+}
+button:hover{
+    border-radius: 10px;
+    background-color: var(--color-secondary-button);
+}
+
+footer{
+    width: 100%;
+    height: 90px;
+    background-color: var(--color-box-footer);
+}
+#endereco{
+    display: inline;
+}
+.enderecosLojas{
+    width: 600px;
+    height: 300px;
+    padding-top: 30px;
+    padding-left: 50px;
+}
+.copyright p{
+    display: inline-block;
+}
+.copyright span{
+    margin-left: 150px;
+    font-size: 1.9rem;
+}
+.copyright{
+    width: 500px;
+    height: 70px;  
+    margin-left: 175px;
+}
+
+#ourStoresAndContactSection{
+    width: 100%;
+    height: 500px;
+    display: flex;
+}
+.areaTitle-contato, .areaForm-contato{
+    width: 150px;
+    height: 260px;
+    float: left;
+}
+.areaForm-contato{
+    width: 500px;
+}
+.ourStoresAndContactBox{
+    width: 600px;
+    height:400px;
+}
+.contact, .ourStores{
+    height: 100%;
+    float: left;
+}
+.contact{
+    width: 650px;
+}
+.contactUs, .message{
+    width: 100%;
+    height:30px;
+    padding-left: 35px;
+    text-align: left; 
+    margin-bottom: 10px;    
+}
+.message{
+    width: 100%;
+    height: 60px;
+    padding-left: 10px;
+    text-align: left;  
+}
+.inputSize{
+    width: 390px;
+}
+.entreEmContato{
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 15px;
+    width: 100%;
+    height:30px;
+    padding-left: 10px;
+    font-size: 15px;
+}
+.entreEmContato h1{
+    margin-bottom: 15px;
+}
+.sendButton{
+    width: 100px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: var(--color-primary-button);
+    color: var(--color-button-text);
+    margin-left: 350px;
+}
+.sendButton:hover{
+    background-color: #f53838;
+}
+textarea{
+    width: 300px;
+    height: 100px;
+    border-radius: 10px;
+    margin-top: 15px;
+    margin-left: 30px;
+    resize: none;
+}
+input[type="radio"] {
+    margin-top: -1px;
+    margin-left: 1px;
+    vertical-align: middle;
+  }

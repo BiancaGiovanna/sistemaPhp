@@ -5,7 +5,7 @@
     --color-title: #1c1c1c;
     --color-text-base: #242424;
     --color-primary-button:#ff1f1f;
-    --color-secondary-button:#14d902;
+    --color-secondary-button:#10bd00;
     --color-secondary-button-menu: #e70026;
     --color-button-text: #FFFFFF;
     --color-box-base: #FFFFFF;
@@ -29,6 +29,10 @@
 a:link, a:visited, a:active{
     text-decoration: none;
     color: var(--color-text-base);
+}
+a:hover{
+    text-decoration: none;
+    color: #ffffff;
 }
 p{
     font-family: "Open Sans", Arial, sans-serif;
