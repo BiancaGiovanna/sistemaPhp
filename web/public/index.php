@@ -1,14 +1,27 @@
+<?php
+    require_once('../../backend/src/model/config.php"');
+
+    //Import do arquivo de função para conectar no BD
+    require_once('../../backend/src/model/conexaoMysql.php');
+
+    //chama a função que vai estabelecer a conexão com o BD
+    if(!$conex = conexaoMysql())
+    {
+        echo("<script> alert('".ERRO_CONEX_BD_MYSQL."'); </script>");
+        //die; //Finaliza a interpretação da página
+    }
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/partial/headerDesk.css">
-    <link rel="stylesheet" href="style/partial/landingPage.css">
-    <link rel="stylesheet" href="style/partial/slider.css">
-    <link rel="stylesheet" href="style/main.css">
-    <link rel="shortcut icon" href="image/icon/iconredragon.png" type="image/png">
-
+    <link rel="stylesheet" href="../src/style/partial/headerDesk.css">
+    <link rel="stylesheet" href="../src/style/partial/landingPage.css">
+    <link rel="stylesheet" href="../src/style/partial/slider.css">
+    <link rel="stylesheet" href="../src/style/main.css">
+    <link rel="shortcut icon" href="../src/image/icon/iconredragon.png" type="image/png">
 
     <title>Landing Page</title>
 </head>
@@ -17,7 +30,7 @@
             <div class=" conteudo centerObject">
                 <a href="index.html">
                     <div class="logo">
-                        <img src="image/icon/redragon-logo-2.png" alt="logo">
+                        <img src="../src/image/icon/redragon-logo-2.png" alt="logo">
                     </div>
                 </a>
 
@@ -56,38 +69,38 @@
             
             <div class="sliderLandingPage">
                 <nav>
-                    <div class="btnSociais" id="btnFace"><a href="https://www.facebook.com/redragonbr" target="_blank"><img src="image/sociais/facebook.png" alt="facebook"></a></div>
-                    <div class="btnSociais" id="btnInsta"><a href="https://www.instagram.com/redragonbrasil/?hl=pt-br" target="_blank"><img src="image/sociais/instagram.png" alt="instagram"></a></div>
-                    <div class="btnSociais" id="btnTwitter"><a href="https://twitter.com/RedragonBR" target="_blank"><img src="image/sociais/twitter.png" alt="twitter"></a></div>
+                    <div class="btnSociais" id="btnFace"><a href="https://www.facebook.com/redragonbr" target="_blank"><img src="../src/image/sociais/facebook.png" alt="facebook"></a></div>
+                    <div class="btnSociais" id="btnInsta"><a href="https://www.instagram.com/redragonbrasil/?hl=pt-br" target="_blank"><img src="../src/image/sociais/instagram.png" alt="instagram"></a></div>
+                    <div class="btnSociais" id="btnTwitter"><a href="https://twitter.com/RedragonBR" target="_blank"><img src="../src/image/sociais/twitter.png" alt="twitter"></a></div>
                 </nav>
 
                     <div id="home">
                         <div id="slideshow">
-                            <div class="slide active" style="background-image: url('image/slider/vataSlide1.png');">
+                            <div class="slide active" style="background-image: url('../src/image/slider/vataSlide1.png');">
                             </div>
-                            <div  class="slide" style="background-image: url('image/slider/amsaSlide2.png');">
+                            <div  class="slide" style="background-image: url('../src/image/slider/amsaSlide2.png');">
                                
                             </div>
-                            <div  class="slide" style="background-image: url('image/slider/zeusSlide3.png');">
+                            <div  class="slide" style="background-image: url('../src/image/slider/zeusSlide3.png');">
                                 
                             </div>
-                            <div  class="slide" style="background-image: url('image/slider/monitorSlide4.png');">
+                            <div  class="slide" style="background-image: url('../src/image/slider/monitorSlide4.png');">
                                
                             </div>
 
-                            <div  class="slide" style="background-image: url('image/slider/lunarSlide5.png');">
+                            <div  class="slide" style="background-image: url('../src/image/slider/lunarSlide5.png');">
                                
                             </div>
 
-                            <div  class="slide" style="background-image: url('image/slider/cobraSlide6.png');">
+                            <div  class="slide" style="background-image: url('../src/image/slider/cobraSlide6.png');">
                                
                             </div>
 
-                            <div  class="slide" style="background-image: url('image/slider/darkAvengerSlide7.png');">
+                            <div  class="slide" style="background-image: url('../src/image/slider/darkAvengerSlide7.png');">
                                
                             </div>
 
-                            <div  class="slide" style="background-image: url('image/slider/kumaraSlide8.png');">
+                            <div  class="slide" style="background-image: url('../src/image/slider/kumaraSlide8.png');">
                                
                             </div>
                         </div>
@@ -134,7 +147,7 @@
                         <div class="listaProdutosLinha1">
                             <div class="vendaProduto">
                                 <div class="imageProduto centerObject">
-                                    <img src="image/produto/headsetzeus.jpg" alt="">
+                                    <img src="../src/image/produto/headsetzeus.jpg" alt="">
                                 </div>
                                 <div class="descProduto">
                                     Nome: 
@@ -147,7 +160,7 @@
                             </div>
                             <div class="vendaProduto">
                                 <div class="imageProduto centerObject">
-                                    <img src="image/produto/headsetzeus.jpg" alt="">
+                                    <img src="../src/image/produto/headsetzeus.jpg" alt="">
                                 </div>
                                 <div class="descProduto">
                                     Nome: 
@@ -160,7 +173,7 @@
                             </div>
                         <div class="vendaProduto">
                             <div class="imageProduto centerObject">
-                                <img src="image/produto/headsetzeus.jpg" alt="">
+                                <img src="../src/image/produto/headsetzeus.jpg" alt="">
                             </div>
                             <div class="descProduto">
                                 Nome: 
@@ -178,7 +191,7 @@
                         <div class="listaProdutosLinha2">
                             <div class="vendaProduto">
                                 <div class="imageProduto centerObject">
-                                    <img src="image/produto/headsetzeus.jpg" alt="">
+                                    <img src="../src/image/produto/headsetzeus.jpg" alt="">
                                 </div>
                                 <div class="descProduto">
                                     Nome: 
@@ -191,7 +204,7 @@
                             </div>
                              <div class="vendaProduto">
                                 <div class="imageProduto centerObject">
-                                    <img src="image/produto/headsetzeus.jpg" alt="">
+                                    <img src="../src/image/produto/headsetzeus.jpg" alt="">
                                 </div>
                                 <div class="descProduto">
                                     Nome: 
@@ -204,7 +217,7 @@
                             </div>
                              <div class="vendaProduto">
                                 <div class="imageProduto centerObject">
-                                    <img src="image/produto/headsetzeus.jpg" alt="">
+                                    <img src="../src/image/produto/headsetzeus.jpg" alt="">
                                 </div>
                                 <div class="descProduto">
                                     Nome: 
@@ -226,28 +239,28 @@
             <div class="divProdutosDestaque">
                 <div class="produtoDestaque">
                     <div class="imageProdutoDestaque centerObject">
-                        <img src="image/produto/vatapro.jpg" alt="">
+                        <img src="../src/image/produto/vatapro.jpg" alt="">
                     </div>
                     <span>Nome do produto</span>
                     <button class="btnSaibaMais">Saiba Mais</button>
                 </div>
                 <div class="produtoDestaque">
                     <div class="imageProdutoDestaque centerObject">
-                        <img src="image/produto/vatapro.jpg" alt="">
+                        <img src="../src/image/produto/vatapro.jpg" alt="">
                     </div>
                     <span>Nome do produto</span>
                     <button class="btnSaibaMais">Saiba Mais</button>
                 </div>
                 <div class="produtoDestaque">
                     <div class="imageProdutoDestaque centerObject">
-                        <img src="image/produto/vatapro.jpg" alt="">
+                        <img src="../src/image/produto/vatapro.jpg" alt="">
                     </div>
                     <span>Nome do produto</span>
                     <button class="btnSaibaMais">Saiba Mais</button>
                 </div>
                 <div class="produtoDestaque">
                     <div class="imageProdutoDestaque centerObject">
-                        <img src="image/produto/vatapro.jpg" alt="">
+                        <img src="../src/image/produto/vatapro.jpg" alt="">
                     </div>
                     <span>Nome do produto</span>
                     <button class="btnSaibaMais">Saiba Mais</button>
@@ -263,7 +276,7 @@
                 <div class="promocaoline">
                     <div class="produtoPromocao">
                         <div class="imageProduto centerObject">
-                            <img src="image/produto/monitorgamerRedragon.jpg" alt="">
+                            <img src="../src/image/produto/monitorgamerRedragon.jpg" alt="">
                         </div>
                         <span class="alinhamentoPromocao">
                         Nome:
@@ -280,7 +293,7 @@
                     </div>
                     <div class="produtoPromocao">
                         <div class="imageProduto centerObject">
-                            <img src="image/produto/monitorgamerRedragon.jpg" alt="">
+                            <img src="../src/image/produto/monitorgamerRedragon.jpg" alt="">
                             
                         </div>
                         <span class="alinhamentoPromocao">
@@ -297,7 +310,7 @@
                     </div>
                     <div class="produtoPromocao">
                         <div class="imageProduto centerObject">
-                            <img src="image/produto/monitorgamerRedragon.jpg" alt="">
+                            <img src="../src/image/produto/monitorgamerRedragon.jpg" alt="">
                             
                         </div>
                         <span class="alinhamentoPromocao">
@@ -316,7 +329,7 @@
                 <div class="promocaoline">
                     <div class="produtoPromocao">
                         <div class="imageProduto centerObject">
-                            <img src="image/produto/monitorgamerRedragon.jpg" alt="">
+                            <img src="../src/image/produto/monitorgamerRedragon.jpg" alt="">
                             
                         </div>
                         <span class="alinhamentoPromocao">
@@ -334,7 +347,7 @@
                     </div>
                     <div class="produtoPromocao">
                         <div class="imageProduto centerObject">
-                            <img src="image/produto/monitorgamerRedragon.jpg" alt="">
+                            <img src="../src/image/produto/monitorgamerRedragon.jpg" alt="">
                             
                         </div>
                         <span class="alinhamentoPromocao">
@@ -351,7 +364,7 @@
                     </div>
                     <div class="produtoPromocao">
                         <div class="imageProduto centerObject">
-                            <img src="image/produto/monitorgamerRedragon.jpg" alt="">
+                            <img src="../src/image/produto/monitorgamerRedragon.jpg" alt="">
                             
                         </div>
                         <span class="alinhamentoPromocao">
@@ -393,7 +406,7 @@
             <div id="ourStoresAndContactSection">
                 <div class="ourStoresAndContactBox">
                     <div class="contact">
-                        <form name="frmcontato" method="post" action="">
+                        <form name="frmcontato" method="post" action="../../backend/src/model/inserirContato.php">
                         <div class="entreEmContato">
                             <h1>Entre em contato conosco</h1>
                         </div>
@@ -428,33 +441,33 @@
                             </div>
                             <div class="areaForm-contato">
                                 <div class="contactUs">
-                                    <input type="text" name="txtnome" value="" class="inputSize" required/> 
+                                    <input type="text" name="txtnome" value="" class="inputSize" required  placeholder="Digite seu Nome" pattern="[a-z A-Z é]*"/> 
                                 </div>
                                 <div class="contactUs">
-                                    <input type="text" name="txttelefone" value="" class="inputSize"/> 
+                                    <input type="text" name="txttelefone" value="" class="inputSize" onkeypress="MascaraTelefone(this);" maxlength="13"  pattern="[(][0-9]{2}[)][0-9]{4}-[0-9]{4}" placeholder="(99)9999-9999"/> 
                                 </div>
                                 <div class="contactUs">
-                                    <input type="text" name="txtcelular" value="" class="inputSize" required/> 
+                                    <input type="text" name="txtcelular" value="" class="inputSize"  onkeypress="Mascara(this);" maxlength="14" required pattern="[(][0-9]{2}[)][0-9]{5}-[0-9]{4}" placeholder="(99)99999-9999"/> 
                                 </div>
                                 <div class="contactUs">
-                                    <input type="text" name="txtEmail" value="" class="inputSize" required/> 
+                                    <input type="text" name="txtemail" value="" class="inputSize" placeholder="name@example.com" required/> 
                                 </div>
                                 <div class="contactUs">
-                                    <input type="text" name="txtHome" value="" class="inputSize"/> 
+                                    <input type="text" name="txthome" value="" class="inputSize" placeholder="Link para seu site/perfil pessoal"/> 
                                 </div>
                                 <div class="contactUs">
-                                    <input type="text" name="txtProfissao" value="" class="inputSize" required/> 
+                                    <input type="text" name="txtprofissao" value="" class="inputSize" placeholder="Area de atuação" required/> 
                                 </div>
                                 <div class="contactUs">
-                                    <input type="radio" name="rdoSexo" value="" required class="btnRadio"/> <span class="selectSexo">Feminino</span> 
-                                    <input type="radio" name="rdoSexo" value="" required class="btnRadio"/> Masculino
-                                    <input type="radio" name="rdoSexo" value="" required class="btnRadio"/> Outro
+                                    <input type="radio" name="rdosexo" value="F" required class="btnRadio"/> <span class="selectSexo">Feminino</span> 
+                                    <input type="radio" name="rdosexo" value="M" required class="btnRadio"/> Masculino
+                                    <input type="radio" name="rdosexo" value="O" required class="btnRadio"/> Outro
                                 </div>
                                 <div class="contactUs">
-                                    <input type="text" name="txtSugestao" value="" class="inputSize"/>
+                                    <input type="text" name="txttipomensagem" value="" class="inputSize"/>
                                 </div>
                                 <div class="message">
-                                    <textarea name="txt_Comentario" cols="53" rows="3" required></textarea>
+                                    <textarea name="txtcomentario" cols="53" rows="3" data-ls-module="charCounter" required></textarea>
                                 </div>
                             <input type="submit" name="btn_Enviar" value="Enviar" class="sendButton">
                             </div>
@@ -481,7 +494,7 @@
         <div class="centerObject conteudo">
             <a href="index.php">
                 <div class="logo">
-                    <img src="image/icon/redragon-logo-2.png" alt="logo footer">
+                    <img src="../src/image/icon/redragon-logo-2.png" alt="logo footer">
                 </div>
             </a>
             <div class="copyright">
@@ -491,10 +504,11 @@
             
         </div>
     </footer>
-
-    <script src="script/slider.js"></script>
+    <script src="../src/js/mascaraTelefone.js"></script>
+    <script src="../src/js/mascaraCelular.js"></script>
+    <script src="../src/js/slider.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="script/ancora.js"></script>
+    <script src="../src/js/ancora.js"></script>
 </body>
 </html>
 
