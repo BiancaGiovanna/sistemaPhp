@@ -13,10 +13,10 @@ if(isset($_GET['modo']))
          //###################### INICIO DA EXCLUSÃO DO REGISTRO #####################################  
             
             //Import do arquivo de Variaveis e Constantes
-            require_once('../model/config.php');
+            require_once('../controllers/config.php');
 
             //Import do arquivo de função para conectar no BD
-            require_once('./conexaoMysql.php');
+            require_once('../controllers/conexaoMysql.php');
 
             //chama a função que vai estabelecer a conexão com o BD
             if(!$conex = conexaoMysql())
@@ -41,9 +41,6 @@ if(isset($_GET['modo']))
                             location.href = '../view/index.php';
                         </script>
                 ");
-
-                //Permite redirecionar para uma outra página
-                //header('location:../index.php');
             }
             else
                 echo("

@@ -8,7 +8,7 @@ function conexaoMysql ()
     $server = (string) "localhost";
     $user = (string) "root";
     $password = (string) "bcd127";
-    $dataBase = (string) "dbcontatos2020";
+    $dataBase = (string) "dbcms2020";
 
     /*Cria a conexão com o BD MySQL*/
     if ($conexao = @mysqli_connect($server, $user, $password, $dataBase))

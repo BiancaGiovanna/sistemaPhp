@@ -290,6 +290,12 @@ input{
     height: 30px;
     border-radius: 10px; 
 } 
+select{
+    width: 200px;
+
+    height: 30px;
+    border-radius: 10px; 
+}
 button{
     border-radius: 10px;
     background-color: var(--color-primary-button);

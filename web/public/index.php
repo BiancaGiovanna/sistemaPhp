@@ -1,8 +1,8 @@
 <?php
-    require_once('../../backend/src/model/config.php"');
+    require_once('../../backend/src/controllers/config.php"');
 
     //Import do arquivo de função para conectar no BD
-    require_once('../../backend/src/model/conexaoMysql.php');
+    require_once('../../backend/src/controllers/conexaoMysql.php');
 
     //chama a função que vai estabelecer a conexão com o BD
     if(!$conex = conexaoMysql())
@@ -459,9 +459,22 @@
                                     <input type="text" name="txtprofissao" value="" class="inputSize" placeholder="Area de atuação" required/> 
                                 </div>
                                 <div class="contactUs">
-                                    <input type="radio" name="rdosexo" value="F" required class="btnRadio"/> <span class="selectSexo">Feminino</span> 
-                                    <input type="radio" name="rdosexo" value="M" required class="btnRadio"/> Masculino
-                                    <input type="radio" name="rdosexo" value="O" required class="btnRadio"/> Outro
+                                    <select name="sltgenero">
+
+                                        <option value="">Selecione um Item</option>
+                                        <?php
+                                            $sql = "select * from tblgeneros";
+                                            $select = mysqli_query($conex, $sql);
+                                            while($rsgenero = mysqli_fetch_assoc($select))
+                                            {
+                                        ?>
+                                            <option value="<?=$rsgenero['idgeneros']?>"> <?=$rsgenero['genero'];?> </option>
+                                        
+                                        <?php 
+                                            }
+                                        
+                                        ?>
+                                    </select>
                                 </div>
                                 <div class="contactUs">
                                     <input type="text" name="txttipomensagem" value="" class="inputSize"/>
@@ -511,5 +524,3 @@
     <script src="../src/js/ancora.js"></script>
 </body>
 </html>
-
-

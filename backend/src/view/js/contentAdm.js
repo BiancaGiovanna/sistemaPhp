@@ -4,6 +4,9 @@ function mostrar_abas(obj) {
     document.getElementById('div_aba2').style.display="none";
     document.getElementById('div_aba3').style.display="none";
     document.getElementById('div_aba4').style.display="none";
+    document.getElementById('registraUsuario').style.display="none";
+
+
 
   switch (obj.id) {
      case 'mostra_aba1':
@@ -18,5 +21,16 @@ function mostrar_abas(obj) {
      case 'mostra_aba4':
      document.getElementById('div_aba4').style.display="block";
      break
+     case 'mostra_registraUsuario':
+     document.getElementById('registraUsuario').style.display="block";
+    break
   }
 }
+
+
+
+// Mask CPF
+
+$(document).ready(function(){
+  $("#cpf").mask("999.999.999-99");
+});

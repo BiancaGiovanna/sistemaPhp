@@ -2,10 +2,10 @@
 /*Abre a conexão com o BD*/
 
     //Import do arquivo de Variaveis e Constantes
-    require_once('./config.php');
+    require_once('../controllers/config.php');
 
     //Import do arquivo de função para conectar no BD
-    require_once('conexaoMysql.php');
+    require_once('../controllers/conexaoMysql.php');
 
     //chama a função que vai estabelecer a conexão com o BD
     if(!$conex = conexaoMysql())
@@ -23,7 +23,7 @@ $homepage = (string) null;
 $facebook = (string) null;
 $tipomensagem = (string) null;
 $mensagem = (string) null;
-$sexo = (string) null;
+$idgenero = (string) null;
 $profissao = (string) null;
 
 /*Recebe todos os dados do formulário*/
@@ -34,7 +34,7 @@ $email = $_POST['txtemail'];
 $homepage = $_POST['txthome'];
 $tipomensagem = $_POST['txttipomensagem'];
 $mensagem = $_POST['txtcomentario'];
-$sexo = $_POST['rdosexo'];
+$idgenero = $_POST['sltgenero'];
 $profissao = $_POST['txtprofissao'];
 
 
@@ -47,7 +47,7 @@ $sql = "insert into tblfaleconosco
                 homepage, 
                 tipomensagem,
                 mensagem, 
-                sexo, 
+                idgeneros, 
                 profissao
             )
             values
@@ -59,7 +59,7 @@ $sql = "insert into tblfaleconosco
                 '".$homepage."',
                 '".$tipomensagem."',
                 '".$mensagem."',
-                '". $sexo ."', 
+                '". $idgenero ."', 
                 '". $profissao ."' 
             )
         ";

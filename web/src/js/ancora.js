@@ -1,6 +1,3 @@
-//Arquivo JS
-
-
 $(window).scroll(function(){ // função para fazer o movimento do scroll (barra de rolagem)
     var top = $(window).scrollTop(); // aqui vc pega a posição da página
 
