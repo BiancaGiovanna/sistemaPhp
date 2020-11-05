@@ -25,3 +25,19 @@ create table tblfaleconosco(
     foreign key(idgeneros)
     references tblgeneros(idgeneros)
 );
+
+create table tbluser(
+	iduser int not null auto_increment primary key,
+    usuario varchar(30) not null,
+    senha varchar(32) not null,
+    nome varchar(80) not null, 
+    email varchar(50) not null,
+    cpf varchar (15) not null,
+    status tinyint (0),
+    celular varchar(15) not null,
+    idgeneros int(8) not null,
+	constraint Fk_user_genero
+    foreign key(idgeneros)
+    references tblgeneros(idgeneros)
+);
+select * from tbluser;

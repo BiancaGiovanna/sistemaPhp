@@ -15,62 +15,55 @@
     }
 
 /*Variaveis*/
+$usuario =(string) null;
+$senha=(string) null;
 $nome = (string) null;
-$telefone = (string) null;
-$celular = (string) null;
 $email = (string) null;
-$homepage = (string) null;
-$tipomensagem = (string) null;
-$mensagem = (string) null;
+$cpf = (string) null;
+$celular = (string) null;
 $idgenero = (string) null;
-$profissao = (string) null;
 
 /*Recebe todos os dados do formulário*/
+
+$usuario = $_POST['txtusuario'];
+$senha= $_POST['password'];
 $nome = $_POST['txtnome'];
-$telefone = $_POST['txttelefone'];
-$celular = $_POST['txtcelular'];
 $email = $_POST['txtemail'];
-$homepage = $_POST['txthome'];
-$tipomensagem = $_POST['txttipomensagem'];
-$mensagem = $_POST['txtcomentario'];
+$cpf = $_POST['numbercpf'];
+$celular = $_POST['txtcelular'];
 $idgenero = $_POST['sltgenero'];
-$profissao = $_POST['txtprofissao'];
 
+$senha = md5($senha);
 
-$sql = "insert into tblfaleconosco 
-            (
-                nome,
-                telefone,
-                celular, 
-                email, 
-                homepage, 
-                tipomensagem,
-                mensagem, 
-                idgeneros, 
-                profissao
-            )
+$sql = "insert into tbluser(
+            usuario,
+            senha,
+            nome,
+            email,
+            cpf,
+            celular,
+            idgeneros        
+        )
             values
             (
+                '". $usuario ."',
+                '". $senha ."',
                 '". $nome ."',
-                '".$telefone."',
+                '". $email ."',
+                '". $cpf ."',
                 '". $celular ."',
-                '". $email ."', 
-                '".$homepage."',
-                '".$tipomensagem."',
-                '".$mensagem."',
-                '". $idgenero ."', 
-                '". $profissao ."' 
+                '". $idgenero ."'
             )
         ";
 
-//Executa no BD o Script SQL
+// Executa no BD o Script SQL
 
 if (mysqli_query($conex, $sql))
 {
     echo("
             <script>
                 alert('Registro Inserido com sucesso!');
-                location.href = '../../../web/public/index.php';
+                location.href = '../view/index.php';
             </script>
     ");
     
@@ -79,7 +72,7 @@ else
     echo("
             <script>
                 alert('Erro ao Inserir os dados no Banco de Dados! Favor verificar a digitação de todos os dados.');
-                location.href = '../index.php';
+                location.href = '../view/index.php';
                 window.history.back();
             </script>
     
