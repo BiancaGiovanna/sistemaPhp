@@ -33,11 +33,37 @@ create table tbluser(
     nome varchar(80) not null, 
     email varchar(50) not null,
     cpf varchar (15) not null,
-    status tinyint (0),
+	statusContato boolean,
     celular varchar(15) not null,
     idgeneros int(8) not null,
 	constraint Fk_user_genero
     foreign key(idgeneros)
     references tblgeneros(idgeneros)
 );
-select * from tbluser;
+create table tblprodutos(
+	idprodutos int not null auto_increment primary key,
+    nome varchar(50) not null,
+    descricao varchar(50) not null,
+    preco decimal(12) not null,
+    destaque boolean,
+    promocao boolean,
+    imagens varchar (32) not null
+);
+create table tblcategoria(
+	idcategoria int not null auto_increment primary key,
+    nome varchar(50) not null,
+    tipo varchar(50) not null,
+    departamentos varchar(50) not null
+);
+
+create table tblsubcategoria(
+	idcategoria int not null auto_increment primary key,
+    nome varchar(50) not null,
+	tipo varchar(50) not null,
+    departamentos varchar(50) not null
+);
+create table tbllojas (
+	idlojas int not null auto_increment primary key,
+    nome varchar(50) not null,
+    endereco varchar(100) not null
+);

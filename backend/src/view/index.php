@@ -202,25 +202,18 @@ if(isset($_GET['modo'])){
                     </div>
                     <div id="div_aba3" class="hidden">
                         <div class="listaConteudo">
-                            <a href="#" class="btnItem">
-                                <div class="item">Produto3</div>
+                            <a href="#abrirModalCategoria" class="btnItem">
+                                <div class="item admProdutoBtn">Inserir Categoria </div>
+                            </a>
+                            <a href="#abrirModalSub" class="btnItem">
+                                <div class="item admProdutoBtn">Inserir Subcategotia </div>
                             </a>
                             <a href="#" class="btnItem">
-                                <div class="item">Produto</div>
+                                <div class="item admProdutoBtn">Visualizar Categorias</div>
                             </a>
                             <a href="#" class="btnItem">
-                                <div class="item">Produto</div>
+                                <div class="item admProdutoBtn">Visualizar SubCategorias</div>
                             </a>
-                            <a href="#" class="btnItem">
-                                <div class="item">Produto</div>
-                            </a>
-                            <a href="#" class="btnItem">
-                                <div class="item">Produto</div>
-                            </a>
-                            <a href="#" class="btnItem">
-                                <div class="item">Produto</div>
-                            </a>
-                            
                           </div>
                     </div>
                     <div id="div_aba4" class="hidden">
@@ -344,6 +337,7 @@ if(isset($_GET['modo'])){
                                             tbluser.email, 
                                             tbluser.cpf,
                                             tbluser.celular,
+                                            tbluser.statusContato,
                                             tblgeneros.sigla from tbluser,
                                             tblgeneros where tbluser.idgeneros = tblgeneros.idgeneros
                                             order by iduser desc;";
@@ -367,7 +361,11 @@ if(isset($_GET['modo'])){
                                                         <img src="image/icon/delete.png" alt="Excluir" title="excluir" class="excluir">
                                                     </a>
                                                     <a href="index.php?modo=consultar&id=<?=$rsuser['iduser']?> #abrirModal" id="mostra_attUsuario"> 
-                                                    <img src="image/icon/edit.svg" alt="edit" class="editar">  
+                                                    <img src="image/icon/edit.svg" alt="edit" class="editar">
+                                                    </a>
+
+                                                    <a href="../model/enableDisable.php?modo=status&id=<?=$rsuser['iduser']?>&status=<?=$rsuser['statusContato']?>">
+                                                    <img src="image/icon/<?=$rsuser['statusContato']?>.png" alt="Editar" title="Editar" class="editar">
                                                     </a>
                                                     
 
@@ -591,6 +589,36 @@ if(isset($_GET['modo'])){
                 </div>
         </div>
     </div> 
+    <div id="abrirModalCategoria" class="modal">
+        <a href="#fechar" title="Fechar" class="fechar">X</a>
+        
+        <div class="conteudoModalProdutos">
+            <h1>Cadastrar Categoria</h1>
+            <div class="cadastrarCategoria">
+
+                <form action="" method="post">
+                    <label>Categoria   </label>
+                    <input type="text" name="txtcategoria" value=""  placeholder="  Digite o nome da categoria"  />
+                    <button class="btnSalvar btnItem">Cadastrar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="abrirModalSub" class="modal">
+        <a href="#fechar" title="Fechar" class="fechar">X</a>
+        
+        <div class="conteudoModalProdutos">
+            <h1>Cadastrar SubCategoria</h1>
+            <div class="cadastrarCategoria">
+
+                <form action="" method="post">
+                    <label>SubCategoria</label>
+                    <input type="text" name="txtcategoria" value=""  placeholder="  Digite o nome da Subcategoria"  />
+                    <button class="btnSalvar btnItem">Cadastrar</button>
+                </form>
+            </div>
+        </div>
+    </div>
                
     <script src="js/mascaraCelular.js"></script>
     <script src="js/modal.js"></script>

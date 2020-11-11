@@ -186,7 +186,7 @@ header h1{
     min-height: 500px;
     height: auto;
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto auto auto;
     justify-content: center;
     align-items: center;
     padding: 10px;
@@ -419,5 +419,24 @@ select{
     cursor: pointer;
     color: white;
 }
-
-
+.admProdutoBtn{
+    width: 250px;
+    height: 80px;
+}
+.conteudoModalProdutos{
+    display: flex;
+    flex-direction: column;
+    
+}
+.cadastrarCategoria{
+    width: 750px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.btnSalvar{
+    width: 150px;
+    height: 50px;
+}

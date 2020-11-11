@@ -41,6 +41,8 @@ $sql = "update tbluser set
 
 
 
+unset($_SESSION['id']);
+
 if (mysqli_query($conex, $sql)){
     echo("
             <script>
