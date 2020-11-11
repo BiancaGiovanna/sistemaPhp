@@ -68,6 +68,9 @@ create table tbllojas (
     endereco varchar(100) not null
 );
 
+show tables;
+
+select * from tbluser;
 
 insert into tblgeneros(genero, sigla)
 values ('Feminino', 'F'),
