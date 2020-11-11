@@ -47,7 +47,7 @@ if (mysqli_query($conex, $sql)){
     echo("
             <script>
                 alert('Registro atualizado com sucesso!');
-                location.href = '../../CMS/index.php';
+                location.href = '../view/index.php';
             </script>
     "); 
 }
@@ -55,7 +55,7 @@ else
     echo("
             <script>
                 alert('Erro ao atualizar os dados no Banco de Dados! Favor verificar a digitação de todos os dados.');
-                location.href = '../../CMS/index.php';
+                location.href = '../view/index.php';
                 window.history.back();
             </script>
         ");

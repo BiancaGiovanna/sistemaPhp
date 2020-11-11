@@ -536,8 +536,8 @@ if(isset($_GET['modo'])){
                                 <td class="tblColunaCadastroFixa">
                                     CPF:
                                 </td>
-                                <td class="tblColunaCadastro">
-                                    <input name="txtCPF" type="text" value="<?=$cpf?>" class="tblInput" maxlength="14" id="cpf_register" onkeypress="mascara_cpf();" placeholder="xxx.xxx.xxx-xx"  required>
+                                <td class="tblColunaCadastro"> 
+                                    <input name="numberCPF" type="text" value="<?=$cpf?>" class="inputSize" maxlength="14" id="cpf" onkeypress="mascara_cpf(this);" placeholder="xxx.xxx.xxx-xx"  required>
                                 </td>
                             </tr>
                             <tr class="tblLinhaTituloCadastro">

@@ -27,8 +27,8 @@ header h1{
     align-items: center;
 }
 .btnFuncitonAdm{
-    width: 175px;
-    height: 90px;
+    /* width: 175px;
+    height: 90px; */
     display: inline;
     justify-content: center;
     align-items: center;
@@ -58,8 +58,8 @@ header h1{
 }
 
 .user{
-    width: 250px;
-    height: 75px;
+    /* width: 250px;
+    height: 75px; */
     margin-left: 15px;
     display: inline;
 

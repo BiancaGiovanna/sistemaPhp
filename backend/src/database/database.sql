@@ -67,3 +67,9 @@ create table tbllojas (
     nome varchar(50) not null,
     endereco varchar(100) not null
 );
+
+
+insert into tblgeneros(genero, sigla)
+values ('Feminino', 'F'),
+		('Masculino', 'M'),
+        ('Outro', 'O');
