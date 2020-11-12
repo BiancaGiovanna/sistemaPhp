@@ -202,19 +202,172 @@ if(isset($_GET['modo'])){
                     </div>
                     <div id="div_aba3" class="hidden">
                         <div class="listaConteudo">
-                            <a href="#abrirModalCategoria" class="btnItem">
-                                <div class="item admProdutoBtn">Inserir Categoria </div>
-                            </a>
-                            <a href="#abrirModalSub" class="btnItem">
-                                <div class="item admProdutoBtn">Inserir Subcategotia </div>
-                            </a>
-                            <a href="#" class="btnItem">
-                                <div class="item admProdutoBtn">Visualizar Categorias</div>
-                            </a>
-                            <a href="#" class="btnItem">
-                                <div class="item admProdutoBtn">Visualizar SubCategorias</div>
-                            </a>
-                          </div>
+                        <div id="containerProduto">
+                        <div id="caixaProduto1">
+                            <div class="caixaCadastroProduto">
+                                <form name="frmCadastroCategoria" method="POST" action="../model/insertCategoria.php">
+                                    <table class="tblProdutos">
+                                        <tr>
+                                            <td class="tblProdutosTitulo" colspan="2">
+                                                <h1>Categoria</h1>
+                                            </td>
+                                        </tr>
+                                        <tr class="tblProdutosLinha">
+                                            <td class="tblProdutosColunaFixa"> 
+                                                Nome: 
+                                            </td>
+                                            <td class="tblProdutosColunaFixa">
+                                                <input type="text" name="txtNome" value="" placeholder="Ex. Teclados">
+                                            </td>
+                                        </tr>
+                                        <tr class="tblProdutosLinha">
+                                            <td class="tblProdutosColuna" colspan="2">
+                                                <input name="sbtCadastrar" type="submit" value="Cadastrar">
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </form>
+                            </div>
+
+                            <div class="caixaCadastroProduto">
+                                <form name="frmCadastroSubCategoria" method="POST" action="../model/insertSubCategoria.php">
+                                    <table class="tblProdutos">
+                                        <tr>
+                                            <td class="tblProdutosTitulo" colspan="2">
+                                                <h1>Sub-Categoria</h1>
+                                            </td>
+                                        </tr>
+                                        <tr class="tblProdutosLinha">
+                                            <td class="tblProdutosColunaFixa"> 
+                                                Nome:
+                                            </td>
+                                            <td class="tblProdutosColunaFixa">
+                                                <input type="text" name="txtName" value="" placeholder="Ex. Teclados Mecanicos">
+                                            </td>
+                                        </tr>
+                                        <tr class="tblProdutosLinha">
+                                            <td class="tblProdutosColunaFixa"> 
+                                                Categoria:
+                                            </td>
+                                            <td class="tblProdutosColunaFixa">
+                                                <select name="sltSubcategoria">
+                                                    <option value="">Selecione a categoria do item</option>
+
+                                                        <?php
+                                                        $sql = "select * from tblcategoria";
+
+
+                                                        $select = mysqli_query($conex, $sql);
+                                                        while($rsCategoria = mysqli_fetch_assoc($select)){
+
+                                                            
+                                                        ?>
+                                                            <option value="<?=$rsCategoria['idCategoria']?>"> <?=$rsCategoria['nome'];?> </option>
+                                                    
+                                                        <?php
+                                                            }
+                                                        ?>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr class="tblProdutosLinha">
+                                            <td class="tblProdutosColuna" colspan="2">
+                                                <input name="sbtCadastrar" type="submit" value="Cadastrar">
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </form>
+                            </div>
+                        </div>
+                        
+                        <div id="caixaProduto2">
+                            <table class="tblProdutos">
+                                <tr>
+                                    <td class="tblProdutosTitulo" colspan="2">
+                                        <h1>Categoria</h1>
+                                    </td>
+                                </tr>
+                                <tr class="tblProdutosLinha">
+                                    <td class="tblProdutosColunaFixa"> Nome </td>
+                                    <td class="tblProdutosColunaFixa"> Opcões </td>
+                                </tr>
+                                    <?php
+                                        // Script para buscar todos os dados no banco de dados
+                                        $sql = "
+                                                select tblcategoria.idCategoria, 
+                                                tblcategoria.nome, tblcategoria.statusCategoria from tblcategoria order 
+                                                by tblcategoria.idCategoria desc;
+                                                ";
+
+                                        $select = mysqli_query($conex, $sql);
+                                        
+                                        while($rsCategoria= mysqli_fetch_assoc($select))
+                                        {  
+                                        ?>
+                                        <tr class="tblProdutosLinha">
+                                            <td class="tblProdutosColuna"> <?=$rsCategoria['nome']?> </td>
+                                            <td class="tblProdutosColuna">
+                                                <a href="../model/deleteCategoria.php?modo=excluir&id=<?=$rsCategoria['idCategoria']?>" onclick="return confirm('Deseja realmente excluir esse Registro?')">
+                                                    <img src="image/icon/delete.png" class="imgicon" alt="Excluir">
+                                                </a>
+                                                <a href="../site/bd/categorias/ativarDesativarCategoria.php?modo=status&id=<?=$rsCategoria['idCategoria']?>&status=<?=$rsCategoria['statusCategoria']?>">
+                                                
+                                                    
+                                                <img src="image/icon/<?=$rsCategoria['statusCategoria']?>.png" class="imgicon" alt="ativar/desativar">
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    <?php
+                                        }
+                                    ?>
+                            </table>
+                        </div>
+                        <div id="caixaProduto3">
+                            <table class="tblProdutos">
+                                <tr>
+                                    <td class="tblProdutosTitulo" colspan="3">
+                                        <h1>Sub-Categoria</h1>
+                                    </td>
+                                </tr>
+                                <tr class="tblProdutosLinha">
+                                    <td class="tblProdutosColunaFixa"> Nome </td>
+                                    <td class="tblProdutosColunaFixa"> Nome da Categoria </td>
+                                    <td class="tblProdutosColunaFixa"> Opcões </td>
+                                </tr>
+                                    <?php
+                                        // Script para buscar todos os dados no banco de dados
+                                        $sql = "
+                                        select tblsubcategoria.idSubcategoria, tblsubcategoria.nomesub, 
+                                        tblsubcategoria.statusSubcategoria, tblsubcategoria.idCategoria, tblcategoria.nome
+                                        from tblsubcategoria, tblcategoria 
+                                        where tblsubcategoria.idCategoria = tblcategoria.idCategoria
+                                        order by tblsubcategoria.idSubcategoria desc;
+                                                ";
+
+                                        $select = mysqli_query($conex, $sql);
+                                        
+                                        while($rsCategoria= mysqli_fetch_assoc($select))
+                                        {
+                                        ?>
+                                        <tr class="tblProdutosLinha">
+                                            <td class="tblProdutosColuna"> <?=$rsCategoria['nomesub']?> </td>
+                                            <td class="tblProdutosColuna"> <?=$rsCategoria['nome']?> </td>
+                                            <td class="tblProdutosColuna">
+                                                <a href="../model/deleteSubcategoria.php?modo=excluir&id=<?=$rsCategoria['idSubcategoria']?>" onclick="return confirm('Deseja realmente excluir esse Registro?')">
+                                                    <img src="image/icon/delete.png" class="imgicon" alt="Excluir">
+                                                </a>
+                                                <a href="../model/enableDisableSubcategoria.php?modo=status&id=<?=$rsCategoria['idSubcategoria']?>&statusSubcategoria=<?=$rsCategoria['statusSubcategoria']?>">
+                                                    <img src="image/icon/<?=$rsCategoria['statusSubcategoria']?>.png" class="imgicon" alt="ativar/desativar">
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    <?php
+                                        }
+                                    ?>
+                            </table>
+                        </div>
+                    </div>
+                </div>
                     </div>
                     <div id="div_aba4" class="hidden">
                         <div class="listaConteudo">

@@ -106,13 +106,7 @@ header h1{
     height: 50px;
     border: solid 1px black;
 }
-.tblColunas{
-    width: 300px;
-    height: 30px;
-    text-align: center;
-    background-color: var(--color-primary-header);
-    border: solid 1px black;
-}
+
 .tblImagens{
     width: auto;
     height: 30px;
@@ -439,4 +433,255 @@ select{
 .btnSalvar{
     width: 150px;
     height: 50px;
+}
+
+#containerProduto {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    padding: 5px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.hidden {
+    display: none;
+}
+
+#caixaProduto1 {
+    width: 100%;
+    height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.caixaCadastroProduto {
+    width: 45%;
+    height: 70%;
+    margin: 0px auto;
+    margin-bottom: 15px;
+    border: solid 1px #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.caixaCadastroProduto form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.caixaCadastroProduto form input[type="text"],
+.caixaCadastroProduto form select {
+    width: 25vw;
+    height: 35px;
+    font-size: 1.2rem;
+    margin: 7px 10px;
+    border-radius: 5px;
+}
+
+.caixaCadastroProduto form input[type="submit"] {
+    width: 110px;
+    height: 40px;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+#caixaProduto2 {
+    width: 45%;
+    height: 35vh;
+    overflow: auto;
+    border-radius: 25px;
+
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+#caixaProduto3 {
+    width: 45%;
+    height: 35vh;
+    overflow: auto;
+    border-radius: 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+.tblConsulta {
+    width: 100%;
+    min-height: 100px;
+    height: auto;
+}
+
+.tblTitulo {
+    width: 100%;
+    min-height: 40px;
+    max-height: 60px;
+    background-color: rgb(255, 255, 255);
+    color: black;
+    text-align: center;
+    font-size: 1.3em;
+    font-style: italic;
+}
+
+.tblLinhas {
+    width: 100%;
+    height: 60px;
+    /* border: solid 1px black; */
+}
+
+.tblColunas {
+    min-width: 75px;
+    max-width: auto;
+    min-height: 40px;
+    max-height: auto;
+    padding-left: 5px;
+    padding-right: 5px;
+
+    border: solid 1px black;
+    font-size: 1em;
+    text-align: center;
+    background-color: var(--color-background);
+}
+
+.tblColunaFixa {
+    min-width: 75px;
+    max-width: auto;
+    height: 45px;
+    text-align: center;
+    color: white;
+    background-color: var(--color-background);
+    border: solid 1px black;
+    font-size: 1.3em;
+}
+
+.imgicon {
+    padding-top: 5px;
+    width: 38px;
+    height: 45px;
+}
+
+.tblCadastroUsuario {
+    width: 80%;
+    min-height: 500px;
+    height: auto;
+    margin: 10px auto;
+    border-radius: 10px;
+}
+
+.tblLinhaTituloCadastro {
+    width: 100%;
+    height: 40px;
+    background-color: var(--color-primary-header);
+    
+    border: solid 1px #000000;
+    text-align: center;
+}
+
+.tblColunaCadastroFixa {
+    width: 25%;
+    height: 45px;
+    background-color: rgba(212, 212, 212, 0.8);
+    text-align: end;
+    font-size: 1.25em;
+    padding-right: 10px;
+}
+
+.tblColunaCadastro {
+    width: 75%;
+    height: 45px;
+    background-color: rgba(212, 212, 212, 0.8);
+}
+
+.tblInput {
+    width: 80%;
+    height: 60%;
+    margin: 0 auto;
+    font-size: 1.1em;
+}
+
+.tblInputEnviar {
+    width: 20%;
+    height: 70%;
+    margin: 0 auto;
+    font-size: 1.1em;
+    background-color: var(--color-background);
+    font-weight: bold;
+    font-style: italic;
+}
+
+#tblSelect {
+    width: 50%;
+    height: 60%;
+    font-size: 1.05em;
+}
+
+.tblProdutos {
+    width: 100%;
+    min-height: 150px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.tblProdutosTitulo {
+    width: 100%;
+    min-height: 20px;
+    max-height: 35px;
+    background-color: rgb(202, 202, 202);
+    color: rgb(0, 0, 0);
+    font-size: 1.3em;
+    font-style: italic;
+    border-radius: 10px;
+}
+.tblProdutosTitulo h1{
+    text-align: center;
+}
+
+.tblProdutosLinha{
+    width: 100%;
+    height: 45px;
+    background-color: var(--color-background);
+    border: solid 1px #000000;
+    text-align: center;
+}
+
+.tblProdutosColuna {
+    min-width: 75px;
+    max-width: auto;
+    min-height: 40px;
+    max-height: auto;
+    padding: 0px 5px;
+    background-color: var(--color-background);
+    border: 1px solid #000000;
+    color: black;
+    font-size: 1.3em;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.tblProdutosColunaFixa {
+    min-width: 150px;
+    max-width: auto;
+    min-height: 35px;
+    max-height: auto;
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: var(--color-background);
+    border: solid 1px black;
+    font: italic bold;
+    font-size: 1.7em;
+    text-align: center;
+    border-radius: 10px;
 }

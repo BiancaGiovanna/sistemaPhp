@@ -49,28 +49,38 @@ create table tblprodutos(
     promocao boolean,
     imagens varchar (32) not null
 );
+
 create table tblcategoria(
-	idcategoria int not null auto_increment primary key,
-    nome varchar(50) not null,
-    tipo varchar(50) not null,
-    departamentos varchar(50) not null
+	idCategoria int not null auto_increment primary key,
+    nome varchar(40) not null,
+    statusCategoria boolean
+);
+create table tblsubcategoria(
+	idSubcategoria int not null auto_increment primary key,
+    nomesub varchar(40) not null,
+    statusSubcategoria boolean,
+    idCategoria int(20) not null,
+    constraint Fk_categoira_subcategoria
+    foreign key(idCategoria)
+    references tblcategoria(idCategoria)
 );
 
-create table tblsubcategoria(
-	idcategoria int not null auto_increment primary key,
-    nome varchar(50) not null,
-	tipo varchar(50) not null,
-    departamentos varchar(50) not null
-);
+
+
+select tblcategoria.idCategoria, tblcategoria.nome, 
+tblcategoria.statusCategoria
+from tblcategoria order by tblcategoria.idCategoria desc;
+
+select tblsubcategoria.idSubcategoria, tblsubcategoria.nomesub, 
+tblsubcategoria.statusSubcategoria, tblsubcategoria.idCategoria, tblcategoria.nome
+from tblsubcategoria, tblcategoria 
+where tblsubcategoria.idCategoria = tblcategoria.idCategoria
+order by tblsubcategoria.idSubcategoria desc;
 create table tbllojas (
 	idlojas int not null auto_increment primary key,
     nome varchar(50) not null,
     endereco varchar(100) not null
 );
-
-show tables;
-
-select * from tbluser;
 
 insert into tblgeneros(genero, sigla)
 values ('Feminino', 'F'),
