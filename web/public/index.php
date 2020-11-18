@@ -489,18 +489,55 @@
                     </div>
                 </div>
             </div>
-            <div class="centerObject " id="enderecos">
+            
+        </div>
+        <div class="centerObject conteudo" id="enderecos">
                 <div class="enderecosLojas">
-                    <h1>Nossas Lojas</h1>
-                    <p>Avenida Paulista N°123 São Paulo/SP</p>
-                    <p>Av. Rubens Caramez N°123 Itapevi/SP</p>
-                    <p>Av. Rubens Caramez N°123 Itapevi/SP</p>
-                    <p>Av. Rubens Caramez N°123 Itapevi/SP</p>
-                    <p>Av. Rubens Caramez N°123 Itapevi/SP</p>
+                <table class="tblNossasLojas">
+                                <tr>
+                                    <td class="tblNossasLojasTitulo" colspan="7">
+                                        <h1>Dados de Nossas Lojas</h1>
+                                    </td>
+                                </tr>
+                                <tr class="tblNossasLojasLinha">
+                                    <td class="tblNossasLojasColunaFixa"> Nome </td>
+                                    <td class="tblNossasLojasColunaFixa"> CEP </td>
+                                    <td class="tblNossasLojasColunaFixa"> Rua </td>
+                                    <td class="tblNossasLojasColunaFixa"> Bairro </td>
+                                    <td class="tblNossasLojasColunaFixa"> Cidade </td>
+                                    <td class="tblNossasLojasColunaFixa"> Estado </td>
+                                    <td class="tblNossasLojasColunaFixa"> Fotos </td>
+
+                                </tr>
+                                <?PHP 
+                                    $sql = "select * from tbllojas";
+
+                                    $select = mysqli_query($conex, $sql);
+                                            
+                                            
+                                    while($rsloja= mysqli_fetch_assoc($select))
+                                        {  
+                                ?>
+                                <tr class="tblNossasLojasLinha">
+                                    <td class="tblNossasLojasColuna"> <?=$rsloja['nome']?> Nome</td>
+                                    <td class="tblNossasLojasColuna"> <?=$rsloja['cep']?> </td>
+                                    <td class="tblNossasLojasColuna"> <?=$rsloja['rua']?> </td>
+                                    <td class="tblNossasLojasColuna"> <?=$rsloja['bairro']?> </td>
+                                    <td class="tblNossasLojasColuna"> <?=$rsloja['cidade']?> </td>
+                                    <td class="tblNossasLojasColuna"> <?=$rsloja['estado']?> </td>
+                                    <td class="tblNossasLojasColuna"> <img src="../../backend/src/files/<?=$rsloja['foto']?>" class="photo"> </td>
+
+                                
+                                    
+                                </tr>
+                                <?php
+                                    }
+                                ?>
+
+                            </table>
                 </div>
     
             </div>
-        </div>
     </main>
 
     <footer>
