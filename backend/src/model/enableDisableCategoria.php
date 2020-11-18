@@ -7,10 +7,12 @@ if(isset($_GET['modo']))
         if(isset($_GET['id']) && $_GET['id'] != "")
         {
             
-            require_once('../conexaoMysql.php');
+            require_once('../controllers/config.php');
 
-            require_once('../../modulo/config.php');
+            //Import do arquivo de função para conectar no BD
+            require_once('../controllers/conexaoMysql.php');
 
+            //chama a função que vai estabelecer a conexão com o BD
             if(!$conex = conexaoMysql())
             {
                 echo("<script> alert('".ERRO_CONEX_BD_MYSQL."'); </script>");
@@ -31,7 +33,7 @@ if(isset($_GET['modo']))
                 echo("
                         <script>
                             alert('status alterado com sucesso!');
-                            location.href = '../../../CMS/index.php';
+                            location.href = '../view/index.php'; 
                         </script>
                 ");
 
@@ -42,7 +44,7 @@ if(isset($_GET['modo']))
                 echo("
                         <script>
                             alert('Erro ao Alterar o status no Banco de Dados!');
-                            location.href = '../../../CMS/index.php';
+                            location.href = '../view/index.php';
                             window.history.back();
                         </script>
 
@@ -54,7 +56,7 @@ if(isset($_GET['modo']))
             echo("
             <script>
                 alert('Nenhum registro foi informado para realizar a exclusão');
-                location.href = '../../../CMS/index.php';
+                location.href = '../view/index.php';
             </script>
     
         ");
@@ -63,7 +65,7 @@ if(isset($_GET['modo']))
         echo("
             <script>
                 alert('Requisição inválida para alterar o status do registro!');
-                location.href = '../../../CMS/index.php';
+                location.href = '../view/index.php';
             </script>
     
         ");
@@ -72,7 +74,7 @@ if(isset($_GET['modo']))
         echo("
             <script>
                 alert('Acesso inválido para esse arquivo!');
-                location.href = '../../../CMS/index.php';
+                location.href = '../view/index.php';
             </script>
         ");
 

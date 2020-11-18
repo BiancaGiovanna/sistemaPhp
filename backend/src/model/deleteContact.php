@@ -33,8 +33,7 @@ if(isset($_GET['modo']))
 
             //Executa no BD o Script SQL
 
-            if (mysqli_query($conex, $sql))
-            {
+            if (mysqli_query($conex, $sql)){
                 echo("
                         <script>
                             alert('Registro Excluido com sucesso!');

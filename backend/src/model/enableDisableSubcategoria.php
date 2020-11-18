@@ -35,9 +35,6 @@ if(isset($_GET['modo']))
                             location.href = '../view/index.php';
                         </script>
                 ");
-
-                //Permite redirecionar para uma outra página
-                //header('location:../index.php');
             }
             else
                 echo("

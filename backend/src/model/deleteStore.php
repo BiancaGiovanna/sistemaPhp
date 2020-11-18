@@ -1,10 +1,10 @@
-<?php 
-    
+<?php
+
 //validação para tratar o acesso do arquivo direto pela URL
 if(isset($_GET['modo']))
 {
     //Validação para tratar se a requisição é realmente para excluir um registro
-    if(strtoupper($_GET['modo']) == 'STATUS')
+    if(strtoupper($_GET['modo']) == 'EXCLUIR')
     {
         //Validação para tratar se foi informado um ID para exclusão
         if(isset($_GET['id']) && $_GET['id'] != "")
@@ -25,35 +25,32 @@ if(isset($_GET['modo']))
                 //die; //Finaliza a interpretação da página
             }
             
-            //Recebendo o id para ativar
-            $idContato = $_GET['id'];
-            
-            //Lógica para alterar no BD o status do registro
-            if($_GET['status'] == 0)
-                $statusContato = 1;
-            else
-                $statusContato = 0;
-            
+            //Recebendo o id para a exclusão
+            $idlojas = $_GET['id'];
 
-            $sql = "update tbluser set statusContato = '".$statusContato."'
-                    where iduser = " . $idContato;
+            $sql = "delete from tbllojas
+                    where idlojas = " . $idlojas;
 
             //Executa no BD o Script SQL
 
             if (mysqli_query($conex, $sql))
             {
+                $photoName = $_GET['foto'];
+                
+                if($photoName != "no-photo.jpg")
+                    
+                    unlink('../files/'. $photoName);
                 echo("
                         <script>
-                            alert('Status alterado com sucesso!');
+                            alert('Registro Excluido com sucesso!');
                             location.href = '../view/index.php';
                         </script>
                 ");
-
             }
             else
                 echo("
                         <script>
-                            alert('Erro ao atualizar o status!');
+                            alert('Erro ao Excluir os dados do Banco de Dados!');
 
                             window.history.back();
                         </script>
@@ -62,25 +59,25 @@ if(isset($_GET['modo']))
             
             //###################### FIM DA EXCLUSÃO DO REGISTRO #####################################
             
-        }else //Condição para tratar se foi informado um ID válido para excluir o registro
+        }else
             echo("
             <script>
-                alert('Nenhum registro foi informado para realizar a modificação');
+                alert('Nenhum registro foi informado para realizar a exclusão');
                 location.href = '../view/index.php';
             </script>
     
         ");
         
-    }else //Condição para tratar a variavel modo se é igual a EXCLUIR
+    }else
         echo("
             <script>
-                alert('Requisição inválida para ativar esse usuario!');
+                alert('Requisição inválida para excluir um registro!');
                 location.href = '../view/index.php';
             </script>
     
         ");
     
-}else //Condição para tratar o acesso do arquivo
+}else
     echo("
             <script>
                 alert('Acesso inválido para esse arquivo!');
@@ -88,6 +85,5 @@ if(isset($_GET['modo']))
             </script>
     
         ");
-
 
 ?>

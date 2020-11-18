@@ -6,3 +6,11 @@ function mascara_cpf (){
         cpf.value += "-"
     }
 }
+function mascara_cpf (){
+    const cpf = document.getElementById('cpf_update')
+    if(cpf.value.length == 3 || cpf.value.length == 7){
+        cpf.value += "."
+    } else if (cpf.value.length == 11) {
+        cpf.value += "-"
+    }
+}

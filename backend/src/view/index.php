@@ -23,8 +23,8 @@ if(isset($_GET['modo'])){
 
             $_SESSION['id'] = $id;
 
-            $sql = " select tbluser.*, tblgeneros.genero from tbluser, tblgeneros 
-            where tblgeneros.idgeneros = tbluser.idgeneros and tbluser.idUser = $id ";
+            $sql = "select tbluser.*, tblgeneros.genero from tbluser, tblgeneros 
+            where tblgeneros.idgeneros = tbluser.idgeneros and tbluser.idUser = $id";
 
             $select = mysqli_query($conex, $sql);
 
@@ -42,12 +42,80 @@ if(isset($_GET['modo'])){
                 
                 $action= "../model/updateUser.php";
 
-
             }
-            
         }
     }
 }
+if(isset($_GET['modo2'])){
+    if(strtoupper($_GET['modo2']) == "CONSULTAR"){
+        if(isset($_GET['id'])&& $_GET['id'] != ""){
+            $id = $_GET['id'];
+
+            session_start();
+
+            $_SESSION['id'] = $id;
+
+            $sql = "select * from tblcategoria where tblcategoria.idCategoria = $id";
+            
+            $select = mysqli_query($conex, $sql);
+
+            if ($rsCategoria = mysqli_fetch_assoc($select)) {
+
+                $categoria = $rsCategoria ['nome'];
+            }
+        }
+    }
+}
+if(isset($_GET['modo3'])){
+    if(strtoupper($_GET['modo3']) == "CONSULTAR"){
+        if(isset($_GET['id'])&& $_GET['id'] != ""){
+            $id = $_GET['id'];
+
+            session_start();
+
+            $_SESSION['id'] = $id;
+
+            $sql = "select * from tblsubcategoria where tblsubcategoria.idSubcategoria = $id";
+            
+            $select = mysqli_query($conex, $sql);
+
+            if ($rsSubCategoria = mysqli_fetch_assoc($select)) {
+
+                $subcategoria = $rsSubCategoria ['nomesub'];
+            }
+        }
+    }
+}
+if(isset($_GET['modo4'])){
+    if(strtoupper($_GET['modo4']) == "CONSULTAR"){
+        if(isset($_GET['id'])&& $_GET['id'] != ""){
+            $id = $_GET['id'];
+
+            session_start();
+
+            $_SESSION['id'] = $id;
+
+            $sql = "select * from tbllojas where tbllojas.idlojas = $id";
+
+            $select = mysqli_query($conex, $sql);
+
+            if ($rsloja = mysqli_fetch_assoc($select)) {
+
+                $nome = $rsloja ['nome'];
+                $cep = $rsloja ['cep'];
+                $rua = $rsloja ['rua'];
+                $bairro = $rsloja ['bairro'];
+                $cidade = $rsloja ['cidade'];
+                $estado = $rsloja ['estado'];
+                $foto = $rsloja ['foto'];
+
+
+
+            }
+        }
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -116,25 +184,13 @@ if(isset($_GET['modo'])){
                 <div class="listAdm">
                     <div id="div_aba1" class="hidden">
                         <div class="listaConteudo">
-                            <a href="#" class="btnItem">
-                                <div class="item">Produto1</div>
+                            <a href="#" class="btnItem"  >
+                                <div class="item">Sobre a Empresa</div>
                             </a>
-                            <a href="#" class="btnItem">
-                                <div class="item">Produto</div>
+                            <a href="#" class="btnItem" onclick="mostrar_abas(this);" id="mostra_cadastrarlojas"> 
+                                <div class="item">Cadastrar Lojas</div>
                             </a>
-                            <a href="#" class="btnItem">
-                                <div class="item">Produto</div>
-                            </a>
-                            <a href="#" class="btnItem">
-                                <div class="item">Produto</div>
-                            </a>
-                            <a href="#" class="btnItem">
-                                <div class="item">Produto</div>
-                            </a>
-                            <a href="#" class="btnItem">
-                                <div class="item">Produto</div>
-                            </a>
-                            
+                                                     
                           </div>
                         
                     </div>
@@ -310,10 +366,11 @@ if(isset($_GET['modo'])){
                                                 <a href="../model/deleteCategoria.php?modo=excluir&id=<?=$rsCategoria['idCategoria']?>" onclick="return confirm('Deseja realmente excluir esse Registro?')">
                                                     <img src="image/icon/delete.png" class="imgicon" alt="Excluir">
                                                 </a>
-                                                <a href="../site/bd/categorias/ativarDesativarCategoria.php?modo=status&id=<?=$rsCategoria['idCategoria']?>&status=<?=$rsCategoria['statusCategoria']?>">
-                                                
-                                                    
-                                                <img src="image/icon/<?=$rsCategoria['statusCategoria']?>.png" class="imgicon" alt="ativar/desativar">
+                                                <a href="../model/enableDisableCategoria.php?modo=status&id=<?=$rsCategoria['idCategoria']?>&statusCategoria=<?=$rsCategoria['statusCategoria']?>">
+                                                    <img src="image/icon/<?=$rsCategoria['statusCategoria']?>.png" class="imgicon" alt="ativar/desativar">
+                                                </a>
+                                                <a href="index.php?modo2=consultar&id=<?=$rsCategoria['idCategoria']?> #abrirModalEditarCategoria" id="mostra_attUsuario"> 
+                                                    <img src="image/icon/edit.svg" alt="edit" class="imgicon">
                                                 </a>
                                             </td>
                                         </tr>
@@ -358,6 +415,9 @@ if(isset($_GET['modo'])){
                                                 </a>
                                                 <a href="../model/enableDisableSubcategoria.php?modo=status&id=<?=$rsCategoria['idSubcategoria']?>&statusSubcategoria=<?=$rsCategoria['statusSubcategoria']?>">
                                                     <img src="image/icon/<?=$rsCategoria['statusSubcategoria']?>.png" class="imgicon" alt="ativar/desativar">
+                                                </a>
+                                                <a href="index.php?modo3=consultar&id=<?=$rsCategoria['idSubcategoria']?> #abrirModalSub" id="mostra_attUsuario"> 
+                                                    <img src="image/icon/edit.svg" alt="edit" class="imgicon">
                                                 </a>
                                             </td>
                                         </tr>
@@ -466,7 +526,122 @@ if(isset($_GET['modo'])){
                                 </form>
                         </div>
                     </div>
+                    <div id="cadastrarlojas" class="hidden">
+                        <div class="listaConteudo"> 
+                        <form name="frmloja" method="post" action="../model/registerStore.php" enctype="multipart/form-data">
+                                <div class="entreEmContato">
+                                    <h1>Cadastre uma nova Loja</h1>
+                                </div>
+                                    <div class="areaTitle-contato">
+                                        <div class="contactUs">
+                                            Nome da Loja:  
+                                        </div>
+                                        <div class="contactUs">
+                                            Escolha uma foto  
+                                        </div>
+                                        
+                                        <div class="contactUs">
+                                            CEP:     
+                                        </div>
+                                        <div class="contactUs">
+                                            Rua:  
+                                        </div>
+                                        <div class="contactUs">
+                                            Bairro:  
+                                        </div>
+                                        <div class="contactUs">
+                                            Cidade:  
+                                        </div>
+                                        <div class="contactUs">
+                                            Estado:  
+                                        </div>
+                                    </div>
+                                    <div class="areaForm-contato">
+                                        <div class="contactUs">
+                                            <input type="text" name="txtnome" class="inputSize" required  placeholder="  Digite o nome da Loja" pattern="[a-z A-Z é]*"/> 
+                                        </div>
+                                        <div class="contactUs">
+                                            <input type="file" name="fleFoto" accept=".png, .jpg" class="inputSize"/> 
+                                        </div>
+                                        <div class="contactUs">
+                                            <input name="cep" type="text" id="cep" class="mascCEP"  size="10" maxlength="9" onblur="pesquisacep(this.value);"  placeholder="00000-000" required/>
+                                        </div>
+                                        <div class="contactUs">
+                                        <input name="rua" type="text" id="rua" size="60"  required placeholder="Digite o nome da rua" />
+                                        </div>
+                                        <div class="contactUs">
+                                            <input name="bairro" type="text" id="bairro" size="40" required  placeholder="Digite o nome do bairro" />
+                                        </div>
+                                        <div class="contactUs">
+                                            <input name="cidade" type="text" id="cidade" size="40" required  placeholder="Digite a cidade" />
+                                        </div>
+                                        <div class="contactUs">
+                                            <input name="uf" type="text" id="uf" size="2" required />
+                                        </div>
+                                        
+                                    <input type="submit" name="btn_Enviar" value="Enviar" class="sendButton">
+                                </form>
 
+                                </div>
+                                    
+                            <div id="tabelaLojas">
+                            <table class="tblNossasLojas">
+                                <tr>
+                                    <td class="tblNossasLojasTitulo" colspan="8">
+                                        <h1>Dados de Nossas Lojas</h1>
+                                    </td>
+                                </tr>
+                                <tr class="tblNossasLojasLinha">
+                                    <td class="tblNossasLojasColunaFixa"> Nome </td>
+                                    <td class="tblNossasLojasColunaFixa"> Fotos </td>
+                                    <td class="tblNossasLojasColunaFixa"> CEP </td>
+                                    <td class="tblNossasLojasColunaFixa"> Rua </td>
+                                    <td class="tblNossasLojasColunaFixa"> Bairro </td>
+                                    <td class="tblNossasLojasColunaFixa"> Cidade </td>
+                                    <td class="tblNossasLojasColunaFixa"> Estado </td>
+
+                                    <td class="tblNossasLojasColunaFixa"> Opcões </td>
+                                </tr>
+                                <?PHP 
+                                    $sql = "select * from tbllojas";
+
+                                    $select = mysqli_query($conex, $sql);
+                                            
+                                            
+                                    while($rsloja= mysqli_fetch_assoc($select))
+                                        {  
+                                ?>
+                                <tr class="tblNossasLojasLinha">
+                                    <td class="tblNossasLojasColuna"> <?=$rsloja['nome']?> </td>
+                                    <td class="tblNossasLojasColuna"> <img src="../files/<?=$rsloja['foto']?>" class="photo"> </td>
+                                    <td class="tblNossasLojasColuna"> <?=$rsloja['cep']?> </td>
+                                    <td class="tblNossasLojasColuna"> <?=$rsloja['rua']?> </td>
+                                    <td class="tblNossasLojasColuna"> <?=$rsloja['bairro']?> </td>
+                                    <td class="tblNossasLojasColuna"> <?=$rsloja['cidade']?> </td>
+                                    <td class="tblNossasLojasColuna"> <?=$rsloja['estado']?> </td>
+                                    <td class="tblNossasLojasColuna"> 
+                                    <a href="../model/deleteStore.php?modo=excluir&id=<?=$rsloja['idlojas']?>&foto=<?=$rsloja['foto']?>" onclick="return confirm('Deseja realmente excluir esse Registro?')">
+                                                        <img src="image/icon/delete.png" alt="Excluir" title="excluir" class="excluir">
+                                                    </a>
+                                                    <a href="index.php?modo4=consultar&id=<?=$rsloja['idlojas']?>#abrirModalLojas" id="mostra_attUsuario"> 
+                                                    <img src="image/icon/edit.svg" alt="edit" class="editar" title="Editar">
+                                                    </a>
+
+                                                    <a href="../model/enableDisableStore.php?modo=status&id=<?=$rsloja['idlojas']?>&status=<?=$rsloja['statusLoja']?>">
+                                                    <img src="image/icon/<?=$rsloja['statusLoja']?>.png" alt="enable/disable" title="ativar e desativar" class="editar">
+                                                    </a>
+                                    </td>
+                                    
+                                </tr>
+                                <?php
+                                    }
+                                ?>
+
+                            </table>
+                        </div>
+                            
+                        </div>
+                    </div>                             
                     <div id="userList" class="hidden">
                         <table id="tblConsulta" >
                                         <tr>
@@ -606,9 +781,9 @@ if(isset($_GET['modo'])){
                                         </div>
                                         
                                     <input type="submit" name="btn_Enviar" value="Enviar" class="sendButton">
-                                    </div>
+                                </div>
                                     
-                                </form>
+                            </form>
                         </div>
                     </div>
                     
@@ -690,7 +865,7 @@ if(isset($_GET['modo'])){
                                     CPF:
                                 </td>
                                 <td class="tblColunaCadastro"> 
-                                    <input name="numberCPF" type="text" value="<?=$cpf?>" class="inputSize" maxlength="14" id="cpf" onkeypress="mascara_cpf(this);" placeholder="xxx.xxx.xxx-xx"  required>
+                                    <input name="numberCPF" type="text" value="<?=$cpf?>" class="inputSize" maxlength="14" id="cpf_update" onkeypress="mascara_cpf(this);" placeholder="xxx.xxx.xxx-xx"  required>
                                 </td>
                             </tr>
                             <tr class="tblLinhaTituloCadastro">
@@ -742,17 +917,79 @@ if(isset($_GET['modo'])){
                 </div>
         </div>
     </div> 
-    <div id="abrirModalCategoria" class="modal">
+    <div id="abrirModalLojas" class="modal">
+        <a href="#fechar" title="Fechar" class="fechar">X</a>
+        
+        <div class="conteudoModal">
+            <div class="caixaCadastro">
+                <form name="frmloja" method="post" action="../model/updateStore.php" enctype="multipart/form-data">
+                    <div class="entreEmContato">
+                        <h1>Atualizar dados da Loja</h1>
+                    </div>
+                        <div class="areaTitle-contato">
+                            <div class="contactUs">
+                                Nome da Loja:  
+                            </div>
+                            <div class="contactUs">
+                                Escolha uma foto  
+                            </div>
+                            
+                            <div class="contactUs">
+                                CEP:     
+                            </div>
+                            <div class="contactUs">
+                                Rua:  
+                            </div>
+                            <div class="contactUs">
+                                Bairro:  
+                            </div>
+                            <div class="contactUs">
+                                Cidade:  
+                            </div>
+                            <div class="contactUs">
+                                Estado:  
+                            </div>
+                        </div>
+                        <div class="areaForm-contato">
+                            <div class="contactUs">
+                                <input type="text" name="txtnome" value="<?=$nome?>"class="inputSize" required  placeholder="  Digite o nome da Loja" pattern="[a-z A-Z é]*"/> 
+                            </div>
+                            <div class="contactUs">
+                                <input type="file" name="fleFoto" accept=".png, .jpg" value="<?=$foto?>" class="inputSize"/> 
+                            </div>
+                            <div class="contactUs">
+                                <input name="cep" type="text" id="cep" class="mascCEP"  value="<?=$cep?>" size="10" maxlength="9" onblur="pesquisacep(this.value);"  placeholder="00000-000" required/>
+                            </div>
+                            <div class="contactUs">
+                            <input name="rua" type="text" id="rua" size="60" value="<?=$rua?>" required placeholder="Digite o nome da rua" />
+                            </div>
+                            <div class="contactUs">
+                                <input name="bairro" type="text" id="bairro" size="40" required value="<?=$bairro?>" placeholder="Digite o nome do bairro" />
+                            </div>
+                            <div class="contactUs">
+                                <input name="cidade" type="text" id="cidade" size="40" required value="<?=$cidade?>" placeholder="Digite a cidade" />
+                            </div>
+                            <div class="contactUs">
+                                <input name="uf" type="text" id="uf" size="2" value="<?=$estado?>" required />
+                            </div>
+                            
+                            <input type="submit" name="btn_Enviar" value="Enviar" class="sendButton">
+                        </form>
+                    </div>
+            </div>
+        </div>
+    </div> 
+    <div id="abrirModalEditarCategoria" class="modal">
         <a href="#fechar" title="Fechar" class="fechar">X</a>
         
         <div class="conteudoModalProdutos">
-            <h1>Cadastrar Categoria</h1>
+            <h1>Atualizar Categoria</h1>
             <div class="cadastrarCategoria">
 
-                <form action="" method="post">
-                    <label>Categoria   </label>
-                    <input type="text" name="txtcategoria" value=""  placeholder="  Digite o nome da categoria"  />
-                    <button class="btnSalvar btnItem">Cadastrar</button>
+                <form action="../model/updateCategoria.php" method="post">
+                    <label>Categoria</label>
+                    <input type="text" name="txtcategoria" value="<?=$categoria?>"  placeholder="  Digite o nome da categoria"  />
+                    <button class="btnSalvar btnItem">Atualizar</button>
                 </form>
             </div>
         </div>
@@ -761,18 +998,33 @@ if(isset($_GET['modo'])){
         <a href="#fechar" title="Fechar" class="fechar">X</a>
         
         <div class="conteudoModalProdutos">
-            <h1>Cadastrar SubCategoria</h1>
+            <h1>Atualizar SubCategoria</h1>
             <div class="cadastrarCategoria">
 
-                <form action="" method="post">
+                <form action="../model/updateSubCategoria.php" method="post">
                     <label>SubCategoria</label>
-                    <input type="text" name="txtcategoria" value=""  placeholder="  Digite o nome da Subcategoria"  />
-                    <button class="btnSalvar btnItem">Cadastrar</button>
+                    <input type="text" name="txtsubcategoria" value="<?=$subcategoria?>"  placeholder="  Digite o nome da Subcategoria"  />
+                    <button class="btnSalvar btnItem">Atualizar</button>
+                        <select name="sltSubcategoria">
+                            <option value="">Selecione a categoria do item</option>
+                                <?php
+                                    $sql = "select * from tblcategoria";
+
+
+                                    $select = mysqli_query($conex, $sql);
+                                    while($rsCategoria = mysqli_fetch_assoc($select)){                
+                                ?>
+                                <option value="<?=$rsCategoria['idCategoria']?>"> <?=$rsCategoria['nome'];?> </option>
+                                                    
+                                <?php
+                                    }
+                                ?>
+                        </select>
                 </form>
             </div>
         </div>
     </div>
-               
+     <script src="js/cep.js"></script>          
     <script src="js/mascaraCelular.js"></script>
     <script src="js/modal.js"></script>
     <script src="js/mascaraCpf.js"></script>

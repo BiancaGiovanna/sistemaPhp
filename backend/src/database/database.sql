@@ -65,8 +65,6 @@ create table tblsubcategoria(
     references tblcategoria(idCategoria)
 );
 
-
-
 select tblcategoria.idCategoria, tblcategoria.nome, 
 tblcategoria.statusCategoria
 from tblcategoria order by tblcategoria.idCategoria desc;
@@ -76,13 +74,21 @@ tblsubcategoria.statusSubcategoria, tblsubcategoria.idCategoria, tblcategoria.no
 from tblsubcategoria, tblcategoria 
 where tblsubcategoria.idCategoria = tblcategoria.idCategoria
 order by tblsubcategoria.idSubcategoria desc;
+
+
 create table tbllojas (
 	idlojas int not null auto_increment primary key,
     nome varchar(50) not null,
-    endereco varchar(100) not null
+    cep varchar(9) not null,
+    rua varchar(70) NOT NULL,
+    bairro varchar(50) NOT NULL,
+    cidade varchar(50) NOT NULL,
+    estado varchar(2) NOT NULL,
+    statusLoja boolean,
+    foto varchar(40) not null
 );
-
 insert into tblgeneros(genero, sigla)
 values ('Feminino', 'F'),
 		('Masculino', 'M'),
         ('Outro', 'O');
+                       

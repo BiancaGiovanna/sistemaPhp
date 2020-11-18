@@ -26,17 +26,17 @@ if(isset($_GET['modo']))
             }
             
             //Recebendo o id para ativar
-            $idContato = $_GET['id'];
+            $idlojas = $_GET['id'];
             
             //Lógica para alterar no BD o status do registro
             if($_GET['status'] == 0)
-                $statusContato = 1;
+                $statusLoja = 1;
             else
-                $statusContato = 0;
+                $statusLoja = 0;
             
 
-            $sql = "update tbluser set statusContato = '".$statusContato."'
-                    where iduser = " . $idContato;
+            $sql = "update tbllojas set statusLoja = '".$statusLoja."'
+                    where idlojas = " . $idlojas;
 
             //Executa no BD o Script SQL
 
@@ -60,9 +60,8 @@ if(isset($_GET['modo']))
 
                     ");
             
-            //###################### FIM DA EXCLUSÃO DO REGISTRO #####################################
             
-        }else //Condição para tratar se foi informado um ID válido para excluir o registro
+        }else
             echo("
             <script>
                 alert('Nenhum registro foi informado para realizar a modificação');
@@ -71,16 +70,16 @@ if(isset($_GET['modo']))
     
         ");
         
-    }else //Condição para tratar a variavel modo se é igual a EXCLUIR
+    }else 
         echo("
             <script>
-                alert('Requisição inválida para ativar esse usuario!');
+                alert('Requisição inválida para modificar esse usuario!');
                 location.href = '../view/index.php';
             </script>
     
         ");
     
-}else //Condição para tratar o acesso do arquivo
+}else
     echo("
             <script>
                 alert('Acesso inválido para esse arquivo!');
