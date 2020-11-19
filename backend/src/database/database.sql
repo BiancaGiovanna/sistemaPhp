@@ -91,4 +91,5 @@ insert into tblgeneros(genero, sigla)
 values ('Feminino', 'F'),
 		('Masculino', 'M'),
         ('Outro', 'O');
+        
                        
