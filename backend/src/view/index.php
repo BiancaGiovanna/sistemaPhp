@@ -184,7 +184,7 @@ if(isset($_GET['modo4'])){
                 <div class="listAdm">
                     <div id="div_aba1" class="hidden">
                         <div class="listaConteudo">
-                            <a href="#" class="btnItem"  >
+                            <a href="#" class="btnItem" onclick="mostrar_abas(this);" id="mostra_sobreEmpresa">
                                 <div class="item">Sobre a Empresa</div>
                             </a>
                             <a href="#" class="btnItem" onclick="mostrar_abas(this);" id="mostra_cadastrarlojas"> 
@@ -525,6 +525,18 @@ if(isset($_GET['modo4'])){
                                     
                                 </form>
                         </div>
+                    </div>
+                    <div id="sobreEmpresa" class="hidden">
+                        <form action="">
+                            <h1 class="contactUs">
+                                        Sobre a empresa:  
+                            </h1>
+                            <div class="message">
+                                <textarea name="txtcomentario" cols="53" rows="3" data-ls-module="charCounter" required></textarea>
+                            </div>
+                            <input type="submit" name="btn_Enviar" value="Enviar" class="sendButton">
+
+                        </form>
                     </div>
                     <div id="cadastrarlojas" class="hidden">
                         <div class="listaConteudo"> 

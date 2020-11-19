@@ -7,6 +7,8 @@ function mostrar_abas(obj) {
     document.getElementById('registraUsuario').style.display="none";
     document.getElementById('userList').style.display="none";
     document.getElementById('cadastrarlojas').style.display="none";
+    document.getElementById('sobreEmpresa').style.display="none";
+
 
   switch (obj.id) {
      case 'mostra_aba1':
@@ -29,6 +31,9 @@ function mostrar_abas(obj) {
      break
      case 'mostra_cadastrarlojas':
      document.getElementById('cadastrarlojas').style.display="block";
+     break
+     case 'mostra_sobreEmpresa':
+     document.getElementById('sobreEmpresa').style.display="block";
      break
   }
 }

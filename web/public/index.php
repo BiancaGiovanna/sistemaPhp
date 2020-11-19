@@ -144,7 +144,7 @@
                             <input type="submit" value="Buscar" id="btnBuscar">
                         </div>
                         <h1>Produtos encotrados XXX</h1>
-                        <div class="listaProdutosLinha1">
+                        <div class="listaProdutosLinha">
                             <div class="vendaProduto">
                                 <div class="imageProduto centerObject">
                                     <img src="../src/image/produto/headsetzeus.jpg" alt="">
@@ -158,76 +158,7 @@
                                 </div>
                                 <button class="btnSaibaMais">Saiba Mais</button>
                             </div>
-                            <div class="vendaProduto">
-                                <div class="imageProduto centerObject">
-                                    <img src="../src/image/produto/headsetzeus.jpg" alt="">
-                                </div>
-                                <div class="descProduto">
-                                    Nome: 
-                                    <br>
-                                    Descrição:
-                                    <br>
-                                    Preço:<span class="preco">R$450</span> 
-                                </div>
-                                <button class="btnSaibaMais">Saiba Mais</button>
-                            </div>
-                        <div class="vendaProduto">
-                            <div class="imageProduto centerObject">
-                                <img src="../src/image/produto/headsetzeus.jpg" alt="">
-                            </div>
-                            <div class="descProduto">
-                                Nome: 
-                                <br>
-                                Descrição:
-                                <br>
-                                Preço:<span class="preco">R$450</span> 
-                            </div>
-                                <button class="btnSaibaMais">Saiba Mais</button>
-                            </div>
-                        </div>
-
-
-
-                        <div class="listaProdutosLinha2">
-                            <div class="vendaProduto">
-                                <div class="imageProduto centerObject">
-                                    <img src="../src/image/produto/headsetzeus.jpg" alt="">
-                                </div>
-                                <div class="descProduto">
-                                    Nome: 
-                                    <br>
-                                    Descrição:
-                                    <br>
-                                    Preço:<span class="preco">R$450</span> 
-                                </div>
-                                <button class="btnSaibaMais">Saiba Mais</button>
-                            </div>
-                             <div class="vendaProduto">
-                                <div class="imageProduto centerObject">
-                                    <img src="../src/image/produto/headsetzeus.jpg" alt="">
-                                </div>
-                                <div class="descProduto">
-                                    Nome: 
-                                    <br>
-                                    Descrição:
-                                    <br>
-                                    Preço:<span class="preco">R$450</span> 
-                                </div>
-                                <button class="btnSaibaMais">Saiba Mais</button>
-                            </div>
-                             <div class="vendaProduto">
-                                <div class="imageProduto centerObject">
-                                    <img src="../src/image/produto/headsetzeus.jpg" alt="">
-                                </div>
-                                <div class="descProduto">
-                                    Nome: 
-                                    <br>
-                                    Descrição:
-                                    <br>
-                                    Preço:<span class="preco">R$450</span> 
-                                </div>
-                                <button class="btnSaibaMais">Saiba Mais</button>
-                            </div>
+                            
                         </div>
                 </div>
             </div>
@@ -244,27 +175,7 @@
                     <span>Nome do produto</span>
                     <button class="btnSaibaMais">Saiba Mais</button>
                 </div>
-                <div class="produtoDestaque">
-                    <div class="imageProdutoDestaque centerObject">
-                        <img src="../src/image/produto/vatapro.jpg" alt="">
-                    </div>
-                    <span>Nome do produto</span>
-                    <button class="btnSaibaMais">Saiba Mais</button>
-                </div>
-                <div class="produtoDestaque">
-                    <div class="imageProdutoDestaque centerObject">
-                        <img src="../src/image/produto/vatapro.jpg" alt="">
-                    </div>
-                    <span>Nome do produto</span>
-                    <button class="btnSaibaMais">Saiba Mais</button>
-                </div>
-                <div class="produtoDestaque">
-                    <div class="imageProdutoDestaque centerObject">
-                        <img src="../src/image/produto/vatapro.jpg" alt="">
-                    </div>
-                    <span>Nome do produto</span>
-                    <button class="btnSaibaMais">Saiba Mais</button>
-                </div>
+               
             </div>
         </div>
 
@@ -291,98 +202,8 @@
                         
                         <button class="btnSaibaMais">Saiba Mais</button>
                     </div>
-                    <div class="produtoPromocao">
-                        <div class="imageProduto centerObject">
-                            <img src="../src/image/produto/monitorgamerRedragon.jpg" alt="">
-                            
-                        </div>
-                        <span class="alinhamentoPromocao">
-                        Nome:
-                        </span>
-                        <br>
-                        <span class="alinhamentoPromocao">
-                          
-                            <span class="precoAntigo">de R$ xxxx</span>
-                            <span class="precoNegrito">por R$ xxxx</span>
-                        </span>
-                        <br>
-                        <button class="btnSaibaMais">Saiba Mais</button>
-                    </div>
-                    <div class="produtoPromocao">
-                        <div class="imageProduto centerObject">
-                            <img src="../src/image/produto/monitorgamerRedragon.jpg" alt="">
-                            
-                        </div>
-                        <span class="alinhamentoPromocao">
-                        Nome:
-                        </span>
-                        <br>
-                        <span class="alinhamentoPromocao">
-                          
-                            <span class="precoAntigo">de R$ xxxx</span>
-                            <span class="precoNegrito">por R$ xxxx</span>
-                        </span>
-                        <br>
-                        <button class="btnSaibaMais">Saiba Mais</button>
-                    </div>
                 </div>
-                <div class="promocaoline">
-                    <div class="produtoPromocao">
-                        <div class="imageProduto centerObject">
-                            <img src="../src/image/produto/monitorgamerRedragon.jpg" alt="">
-                            
-                        </div>
-                        <span class="alinhamentoPromocao">
-                        Nome:
-                        </span>
-                        <br>
-                        <span class="alinhamentoPromocao">
-                          
-                            <span class="precoAntigo">de R$ xxxx</span>
-                            <span class="precoNegrito">por R$ xxxx</span>
-                        </span>
-                        <br>
-                        
-                        <button class="btnSaibaMais">Saiba Mais</button>
-                    </div>
-                    <div class="produtoPromocao">
-                        <div class="imageProduto centerObject">
-                            <img src="../src/image/produto/monitorgamerRedragon.jpg" alt="">
-                            
-                        </div>
-                        <span class="alinhamentoPromocao">
-                        Nome:
-                        </span>
-                        <br>
-                        <span class="alinhamentoPromocao">
-                          
-                            <span class="precoAntigo">de R$ xxxx</span>
-                            <span class="precoNegrito">por R$ xxxx</span>
-                        </span>
-                        <br>
-                        <button class="btnSaibaMais">Saiba Mais</button>
-                    </div>
-                    <div class="produtoPromocao">
-                        <div class="imageProduto centerObject">
-                            <img src="../src/image/produto/monitorgamerRedragon.jpg" alt="">
-                            
-                        </div>
-                        <span class="alinhamentoPromocao">
-                        Nome:
-                        </span>
-                        <br>
-                        <span class="alinhamentoPromocao">
-                          
-                            <span class="precoAntigo">de R$ xxxx</span>
-                            <span class="precoNegrito">por R$ xxxx</span>
-                        </span>
-                        <br>
-                        <button class="btnSaibaMais">Saiba Mais</button>
-                    </div>
-                </div>
-                
-            </div>
-        </div> 
+
 
         <div class="centerObject conteudo">
             <h1>Sobre a Redragon</h1>
@@ -510,7 +331,7 @@
 
                                 </tr>
                                 <?PHP 
-                                    $sql = "select * from tbllojas";
+                                    $sql = "select * from tbllojas where statusLoja= 1";
 
                                     $select = mysqli_query($conex, $sql);
                                             
