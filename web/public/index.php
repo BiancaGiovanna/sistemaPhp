@@ -28,7 +28,7 @@
 <body>
     <header>
             <div class=" conteudo centerObject">
-                <a href="index.html">
+                <a href="index.php">
                     <div class="logo">
                         <img src="../src/image/icon/redragon-logo-2.png" alt="logo">
                     </div>
@@ -39,8 +39,9 @@
                     <div class="divMenu centerObject" >
                         <ul class="menu">
                             <li class="menuItens"><a href="#empresa">A Empresa</a></li>
-                            <li class="menuItens"><a href="#enderecos">Lojas</a></li>
                             <li class="menuItens"><a href="#ourStoresAndContactSection">Contatos</a></li>
+                            <li class="menuItens"><a href="#enderecos">Lojas</a></li>
+
                         </ul>
                     </div>
                 </div> 
@@ -208,17 +209,23 @@
         <div class="centerObject conteudo">
             <h1>Sobre a Redragon</h1>
         </div>
-        
+        <?php
+             $sql = "select * from tblsobre ";
+
+             $select = mysqli_query($conex, $sql);
+                     
+                     
+             while($rsSobre= mysqli_fetch_assoc($select))
+                {    
+        ?>
         <div class="centerObject conteudo" id="empresa">
             <div id="textoEmpresa" >
-                <p>Produtos Inovadores, Designs Criativos, Durabilidade Extrema e Compromisso com Preços Honestos - a Redragon é uma marca Gamer com esses 4 importantes pilares que, em pouco mais de 3 anos em operação no Brasil, já a tornaram a marca Gamer mais amada do País. Não só nos produtos, a Redragon trabalha lado a lado com gamers e especialistas, e se renova todos os dias para criar o produto certo pra você, que também Desafia seus Limites todos os dias.
-                </p>
-                <p>
-                    Apesar da Matriz existir desde 1996, a linha Internacional de Desenvolvimento Gamer REDRAGON foi criada em 2012 especificamente com foco em atender um público verdadeiramente apaixonado: criamos e evoluímos nossos produtos para garantir o máximo em satisfação e qualidade por um preço justo.
-                </p>
-                <p>
-                    Alta Tecnologia, longa experiência e garantia de qualidade em cada peça fabricada: é com isso que a REDRAGON rapidamente conquistou confiança em diversos países para te deixar cada vez mais #ReadyForBattle.
-                </p>
+                <p><?=$rsSobre['sobre']?></p>
+                <?php 
+                
+                    }
+                                        
+                ?>
             </div>
         </div>
         

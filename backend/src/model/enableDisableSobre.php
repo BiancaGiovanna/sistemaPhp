@@ -1,42 +1,28 @@
 <?php 
     
-//validação para tratar o acesso do arquivo direto pela URL
 if(isset($_GET['modo']))
 {
-    //Validação para tratar se a requisição é realmente para excluir um registro
     if(strtoupper($_GET['modo']) == 'STATUS')
     {
-        //Validação para tratar se foi informado um ID para exclusão
-        if(isset($_GET['id']) && $_GET['id'] != "")
-        {
-            
-         //###################### INICIO DA EXCLUSÃO DO REGISTRO #####################################  
-            
-            //Import do arquivo de Variaveis e Constantes
+        if(isset($_GET['id']) && $_GET['id'] != ""){
+
             require_once('../controllers/config.php');
 
-            //Import do arquivo de função para conectar no BD
             require_once('../controllers/conexaoMysql.php');
 
-            //chama a função que vai estabelecer a conexão com o BD
-            if(!$conex = conexaoMysql())
-            {
+            if(!$conex = conexaoMysql()){
                 echo("<script> alert('".ERRO_CONEX_BD_MYSQL."'); </script>");
-                //die; //Finaliza a interpretação da página
             }
+            $idsobre = $_GET['id'];
             
-            //Recebendo o id para ativar
-            $idlojas = $_GET['id'];
-            
-            //Lógica para alterar no BD o status do registro
             if($_GET['status'] == 0)
-                $statusLoja = 1;
+                $statusSobre = 1;
             else
-                $statusLoja = 0;
+                $statusSobre = 0;
             
 
-            $sql = "update tbllojas set statusLoja = '".$statusLoja."'
-                    where idlojas = " . $idlojas;
+            $sql = "update tblsobre set statusSobre = '".$statusSobre."'
+                    where idsobre = " . $idsobre;
 
             if (mysqli_query($conex, $sql))
             {
@@ -85,6 +71,3 @@ if(isset($_GET['modo']))
             </script>
     
         ");
-
-
-?>

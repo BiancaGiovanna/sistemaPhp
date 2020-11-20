@@ -47,9 +47,9 @@ create table tblprodutos(
     preco decimal(12) not null,
     destaque boolean,
     promocao boolean,
-    imagens varchar (32) not null
+    imagens varchar (32) not null,
+    statusProduto boolean
 );
-
 create table tblcategoria(
 	idCategoria int not null auto_increment primary key,
     nome varchar(40) not null,
@@ -87,6 +87,12 @@ create table tbllojas (
     statusLoja boolean,
     foto varchar(40) not null
 );
+create table tblsobre(
+	idsobre integer not null auto_increment primary key,
+    sobre text not null,
+    statusSobre boolean
+);
+
 insert into tblgeneros(genero, sigla)
 values ('Feminino', 'F'),
 		('Masculino', 'M'),

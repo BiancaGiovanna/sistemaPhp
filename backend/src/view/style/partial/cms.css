@@ -75,7 +75,7 @@ header h1{
 
 #functionAdm{
     width: 100%;
-    min-height: 55%;
+    min-height: 500px;
     height: auto;
     border: 2px solid black;
     display: flex;
@@ -276,6 +276,7 @@ header h1{
 .entreEmContato h1{
     margin-bottom: 15px;
 }
+
 .sendButton{
     width: 100px;
     height: 40px;
@@ -288,10 +289,12 @@ header h1{
 .sendButton:hover{
     background-color: #f53838;
 }
+.btnContato{
+    margin-top: 0;
+}
 textarea{
-    
     width: 900px;
-    min-height: 200px;
+    min-height: 150px;
     height: auto;
     border-radius: 10px;
     margin-top: 15px;
@@ -308,17 +311,7 @@ input{
     height: 30px;
     border-radius: 10px; 
     text-align: center;
-}/*  
-button{
-    border-radius: 10px;
-    background-color: var(--color-primary-button);
-    color: var(--color-button-text);
-
 }
-button:hover{
-    border-radius: 10px;
-    background-color: var(--color-secondary-button);
-} */
 
 footer{
     display: flex;
@@ -462,7 +455,7 @@ select{
 
 #caixaProduto1 {
     width: 100%;
-    height: 40vh;
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -668,9 +661,10 @@ select{
 
 .tblProdutosColuna {
     min-width: 75px;
-    max-width: auto;
+    
+    width: auto;
     min-height: 40px;
-    max-height: auto;
+    height: auto;
     padding: 0px 5px;
     background-color: var(--color-background);
     border: 1px solid #000000;
@@ -715,7 +709,7 @@ select{
 .tblNossasLojasTitulo {
     width: 100%;
     min-height: 10px;
-    max-height: 40px;
+    height: 40px;
     background-color: rgb(202, 202, 202);
     color: rgb(0, 0, 0);
     text-align: center;
@@ -725,17 +719,20 @@ select{
 }
 .tblNossasLojasLinha {
     width: 100%;
-    height: 30px;
+    height: 50px;
+    border-radius: 10px;
     background-color: rgb(202, 202, 202);
     border: solid 1px #000000;
-    text-align: center;
+    /* display:flex;
+    align-items: center;
+    justify-content: center; */
 }
 
 .tblNossasLojasColunaFixa {
     min-width: 60px;
-    max-width: auto;
+    width: auto;
     min-height: 35px;
-    max-height: auto;
+    height: auto;
     padding: 0px 3px;
     background-color: rgb(202, 202, 202);
     border: solid 1px black;
@@ -748,4 +745,12 @@ select{
     width: 50px;
     height: 50px;
 }
-
+.atualizarSobre{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.tblNossasLojasColuna{
+    text-align: center;
+}

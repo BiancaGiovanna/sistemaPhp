@@ -115,6 +115,26 @@ if(isset($_GET['modo4'])){
         }
     }
 }
+if(isset($_GET['modo5'])){
+    if(strtoupper($_GET['modo5']) == "CONSULTAR"){
+        if(isset($_GET['id'])&& $_GET['id'] != ""){
+            $id = $_GET['id'];
+
+            session_start();
+
+            $_SESSION['id'] = $id;
+
+            $sql = "select * from tblsobre where tblsobre.idsobre = $id";
+
+            $select = mysqli_query($conex, $sql);
+
+            if ($rsSobre = mysqli_fetch_assoc($select)) {
+
+                $sobre = $rsSobre ['sobre'];
+            }
+        }
+    }
+}
 
 ?>
 
@@ -425,6 +445,120 @@ if(isset($_GET['modo4'])){
                                         }
                                     ?>
                             </table>
+                            
+                        </div>
+                        <div class="caixaCadastroProduto">
+                        <form name="frmCadastroProdutos" method="POST" action="../site/bd/categorias/inserirProdutos.php">
+                                    <table class="tblProdutos">
+                                        <tr>
+                                            <td class="tblProdutosTitulo" colspan="2">
+                                                <h1>Produtos</h1>
+                                            </td>
+                                        </tr>
+                                        <tr class="tblProdutosLinha">
+                                            <td class="tblProdutosColunaFixa"> 
+                                                Nome:
+                                            </td>
+                                            <td class="tblProdutosColuna">
+                                                <input type="text" name="txtName" value="" placeholder="Ex. Teclado Mecanico">
+                                            </td>
+                                        </tr>
+                                        <tr class="tblProdutosLinha">
+                                            <td class="tblProdutosColunaFixa"> 
+                                                Descrição:
+                                            </td>
+                                            <td class="tblProdutosColuna">
+                                                <input type="text" name="txtDescricao" value="" placeholder="Ex. Teclado mecanico com swtch azul">
+                                            </td>
+                                        </tr>
+                                        <tr class="tblProdutosLinha">
+                                            <td class="tblProdutosColunaFixa"> 
+                                                Preço:
+                                            </td>
+                                            <td class="tblProdutosColuna">
+                                                <input type="text" name="txtPreco" value="">
+                                            </td>
+                                        </tr>
+                                        <tr class="tblProdutosLinha">
+                                            <td class="tblProdutosColunaFixa"> 
+                                                Desconto:
+                                            </td>
+                                            <td class="tblProdutosColuna">
+                                                <input type="radio" name="rdoDestaque" value="S">Sim
+                                                <input type="radio" name="rdoDestaque" value="N">Não <br/>
+                                                <input type="text" id="desconto" name="txtDesconto" placeholder="Desconto em %" value="">
+                                            </td>
+                                        </tr>
+                                        <tr class="tblProdutosLinha">
+                                            <td class="tblProdutosColunaFixa">
+                                                Destaque:
+                                            </td>
+                                            <td class="tblProdutosColuna">
+                                                <input type="radio" name="rdoDestaque" value="S">Sim
+                                                <input type="radio" name="rdoDestaque" value="N">Não
+                                            </td>
+                                        </tr>
+                                        <tr class="tblProdutosLinha">
+                                            <td class="tblProdutosColuna" colspan="2">
+                                                <input name="sbtCadastrar" type="submit" value="Cadastrar">
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </form>
+                            </div>
+                            <div id="tabelaLojas">
+                            <table class="tblNossasLojas">
+                                <tr>
+                                    <td class="tblNossasLojasTitulo" colspan="7">
+                                        <h1>Dados de Nossas Lojas</h1>
+                                    </td>
+                                </tr>
+                                <tr class="tblNossasLojasLinha">
+                                    <td class="tblNossasLojasColunaFixa"> Nome </td>
+                                    <td class="tblNossasLojasColunaFixa"> Descrição </td>
+                                    <td class="tblNossasLojasColunaFixa"> Preço </td>
+                                    <td class="tblNossasLojasColunaFixa"> Destaque </td>
+                                    <td class="tblNossasLojasColunaFixa"> Promoção </td>
+                                    <td class="tblNossasLojasColunaFixa"> Foto </td>
+
+                                    <td class="tblNossasLojasColunaFixa"> Opcões </td>
+                                </tr>
+                                <?PHP 
+                                    $sql = "select * from tbllojas";
+
+                                    $select = mysqli_query($conex, $sql);
+                                            
+                                            
+                                    while($rsloja= mysqli_fetch_assoc($select))
+                                        {  
+                                ?>
+                                <tr class="tblNossasLojasLinha">
+                                    <td class="tblNossasLojasColuna">  </td>
+                                    <td class="tblNossasLojasColuna"> <img src="" class="photo"> </td>
+                                    <td class="tblNossasLojasColuna">  </td>
+                                    <td class="tblNossasLojasColuna">  </td>
+                                    <td class="tblNossasLojasColuna">  </td>
+                                    <td class="tblNossasLojasColuna">  </td>
+                                    
+                                    <td class="tblNossasLojasColuna"> 
+                                    <a href="../model/deleteStore.php?modo=excluir&id=<?=$rsloja['idlojas']?>&foto=<?=$rsloja['foto']?>" onclick="return confirm('Deseja realmente excluir esse Registro?')">
+                                                        <img src="image/icon/delete.png" alt="Excluir" title="excluir" class="excluir">
+                                                    </a>
+                                                    <a href="index.php?modo4=consultar&id=<?=$rsloja['idlojas']?>#abrirModalLojas" id="mostra_attUsuario"> 
+                                                    <img src="image/icon/edit.svg" alt="edit" class="editar" title="Editar">
+                                                    </a>
+
+                                                    <a href="../model/enableDisableStore.php?modo=status&id=<?=$rsloja['idlojas']?>&status=<?=$rsloja['statusLoja']?>">
+                                                    <img src="image/icon/<?=$rsloja['statusLoja']?>.png" alt="enable/disable" title="ativar e desativar" class="editar">
+                                                    </a>
+                                    </td>
+                                    
+                                </tr>
+                                <?php
+                                    }
+                                ?>
+
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -496,7 +630,7 @@ if(isset($_GET['modo4'])){
                                             <input type="text" name="txtemail" value="" class="inputSize" placeholder="  name@example.com" required/> 
                                         </div>
                                         <div class="contactUs">
-                                            <input type="text" name="numbercpf" value="" class="inputSize" id="cpf" maxlength="14" onkeypress="mascara_cpf(this);" placeholder=" Digite seu CPF"  required/> 
+                                            <input pattern="[0-9]{11}" type="text" name="numbercpf" value="" class="inputSize" id="cpf_register" maxlength="14" onkeypress="mascara_cpf(this);" placeholder=" Digite seu CPF"  required/> 
                                         </div>
                                         <div class="contactUs">
                                             <input type="text" name="txtcelular" value="" class="inputSize"  onkeypress="Mascara(this);" maxlength="14" required pattern="[(][0-9]{2}[)][0-9]{5}-[0-9]{4}" placeholder="  (99)99999-9999"/> 
@@ -520,23 +654,64 @@ if(isset($_GET['modo4'])){
                                             </select>
                                         </div>
                                         
-                                    <input type="submit" name="btn_Enviar" value="Enviar" class="sendButton">
+                                    <input type="submit" name="btn_Enviar" value="Enviar" class="sendButton btnContato">
                                     </div>
                                     
                                 </form>
                         </div>
                     </div>
                     <div id="sobreEmpresa" class="hidden">
-                        <form action="">
+                        <form action="../model/inserirSobre.php" method="post">
                             <h1 class="contactUs">
                                         Sobre a empresa:  
                             </h1>
                             <div class="message">
-                                <textarea name="txtcomentario" cols="53" rows="3" data-ls-module="charCounter" required></textarea>
+                                <textarea name="txtcomentario" cols="53" rows="3" data-ls-module="charCounter" required value="<?=$sobre?>"></textarea>
                             </div>
                             <input type="submit" name="btn_Enviar" value="Enviar" class="sendButton">
 
                         </form>
+                        <div id="tabelaLojas" class="btnContato">
+                            <table class="tblNossasLojas ">
+                                <tr>
+                                    <td class="tblNossasLojasTitulo" colspan="1" text-align="center">
+                                        <h1>Sobre a Empresa</h1>
+                                    </td>
+                                </tr>
+                                <tr class="tblNossasLojasLinha">
+                                    
+                                    <td class="tblNossasLojasColunaFixa"> Opcões </td>
+                                </tr>
+                                <?PHP 
+                                    $sql = "select * from tblsobre";
+
+                                    $select = mysqli_query($conex, $sql);
+                                            
+                                            
+                                    while($rsSobre= mysqli_fetch_assoc($select))
+                                        {  
+                                ?>
+                                <tr class="tblNossasLojasLinha">
+                                    <td class="tblNossasLojasColuna"> 
+                                    <a href="../model/deleteSobre.php?modo=excluir&id=<?=$rsSobre['idsobre']?>" onclick="return confirm('Deseja realmente excluir esse Registro?')">
+                                                        <img src="image/icon/delete.png" alt="Excluir" title="excluir" class="excluir">
+                                                    </a>
+                                                    <a href="index.php?modo5=consultar&id=<?=$rsSobre['idsobre']?>#abrirModalSobre" > 
+                                                    <img src="image/icon/edit.svg" alt="edit" class="editar" title="Editar">
+                                                    </a>
+
+                                                    <a href="../model/enableDisableSobre.php?modo=status&id=<?=$rsSobre['idsobre']?>&status=<?=$rsSobre['statusSobre']?>">
+                                                    <img src="image/icon/<?=$rsSobre['statusSobre']?>.png" alt="enable/disable" title="ativar e desativar" class="editar">
+                                                    </a>
+                                    </td>
+                                    
+                                </tr>
+                                <?php
+                                    }
+                                ?>
+
+                            </table>
+                        </div>
                     </div>
                     <div id="cadastrarlojas" class="hidden">
                         <div class="listaConteudo"> 
@@ -591,7 +766,7 @@ if(isset($_GET['modo4'])){
                                             <input name="uf" type="text" id="uf" size="2" required />
                                         </div>
                                         
-                                    <input type="submit" name="btn_Enviar" value="Enviar" class="sendButton">
+                                    <input type="submit" name="btn_Enviar" value="Enviar" class="sendButton btnContato">
                                 </form>
 
                                 </div>
@@ -719,86 +894,6 @@ if(isset($_GET['modo4'])){
                         </table>
                     </div>
                 </div>
-                <div id="registraUsuario "  class="usuario hidden">
-                        <div class="listaConteudo">
-                            <form name="frmcontato" method="post" action="<?=$action?>">
-                                <div class="entreEmContato">
-                                    <h1>Cadastre um novo usuário</h1>
-                                </div>
-                                    <div class="areaTitle-contato">
-                                        <div class="contactUs">
-                                            Usuário:  
-                                        </div>
-                                        <div class="contactUs">
-                                            Senha:     
-                                        </div>
-                                        <div class="contactUs">
-                                            Confirme sua senha:     
-                                        </div>
-                                        <div class="contactUs">
-                                            Nome:     
-                                        </div>
-                                        <div class="contactUs">
-                                            Email:  
-                                        </div>
-                                        <div class="contactUs">
-                                            CPF:  
-                                        </div>
-                                        <div class="contactUs">
-                                            Celular:  
-                                        </div>
-                                        <div class="contactUs">
-                                            Sexo:  
-                                        </div>
-                                    </div>
-                                    <div class="areaForm-contato">
-                                        <div class="contactUs">
-                                            <input type="text" name="txtusuario" value="" class="inputSize" required  placeholder="  Digite o usuário q sera ultilizado no Login" pattern="[a-z A-Z é]*"/> 
-                                        </div>
-                                        <div class="contactUs">
-                                            <input type="password" name="password" value="" class="inputSize"  minlength="8"  required  placeholder="  Minimo de 8 caracteres"/> 
-                                        </div>
-                                        <div class="contactUs">
-                                            <input type="password" name="confirmePassword" value="" class="inputSize"  minlength="8"  required  placeholder=" Confirme sua senha"/> 
-                                        </div>
-                                        <div class="contactUs">
-                                            <input type="text" name="txtnome" value="" class="inputSize" required  placeholder="  Digite seu Nome" pattern="[a-z A-Z é]*"/> 
-                                        </div>
-                                        <div class="contactUs">
-                                            <input type="text" name="txtemail" value="" class="inputSize" placeholder="  name@example.com" required/> 
-                                        </div>
-                                        <div class="contactUs">
-                                            <input type="text" name="numbercpf" value="" class="inputSize" id="cpf" maxlength="14" onkeypress="mascara_cpf(this);" placeholder=" Digite seu CPF"  required/> 
-                                        </div>
-                                        <div class="contactUs">
-                                            <input type="text" name="txtcelular" value="" class="inputSize"  onkeypress="Mascara(this);" maxlength="14" required pattern="[(][0-9]{2}[)][0-9]{5}-[0-9]{4}" placeholder="  (99)99999-9999"/> 
-                                        </div>
-                                        <div class="contactUs">
-                                            <select name="sltgenero">
-
-                                            <option value="">Selecione um Item</option>
-                                            <?php
-                                                $sql = "select * from tblgeneros";
-                                                $select = mysqli_query($conex, $sql);
-                                                while($rsgenero = mysqli_fetch_assoc($select))
-                                                {
-                                            ?>
-                                                <option value="<?=$rsgenero['idgeneros']?>"> <?=$rsgenero['genero'];?> </option>
-
-                                            <?php 
-                                                }
-
-                                            ?>
-                                            </select>
-                                        </div>
-                                        
-                                    <input type="submit" name="btn_Enviar" value="Enviar" class="sendButton">
-                                </div>
-                                    
-                            </form>
-                        </div>
-                    </div>
-                    
                 </div>
 
             
@@ -877,7 +972,7 @@ if(isset($_GET['modo4'])){
                                     CPF:
                                 </td>
                                 <td class="tblColunaCadastro"> 
-                                    <input name="numberCPF" type="text" value="<?=$cpf?>" class="inputSize" maxlength="14" id="cpf_update" onkeypress="mascara_cpf(this);" placeholder="xxx.xxx.xxx-xx"  required>
+                                    <input name="numberCPF" type="text" value="<?=$cpf?>" class="inputSize" maxlength="14" id="cpf_update" onkeypress="mascara_cpf(this);" pattern="[0-9]{11}" placeholder="xxx.xxx.xxx-xx"  required>
                                 </td>
                             </tr>
                             <tr class="tblLinhaTituloCadastro">
@@ -921,7 +1016,7 @@ if(isset($_GET['modo4'])){
                             </tr>
                             <tr class="tblLinhaTituloCadastro">
                                 <td class="tblColunaCadastro" colspan="2">
-                                    <input name="sbtEnviar" type="submit" value="Atualizar" class="sendButton">
+                                    <input name="sbtEnviar" type="submit" value="Atualizar" class="btnContato sendButton ">
                                 </td>
                             </tr>
                         </table>
@@ -985,12 +1080,27 @@ if(isset($_GET['modo4'])){
                                 <input name="uf" type="text" id="uf" size="2" value="<?=$estado?>" required />
                             </div>
                             
-                            <input type="submit" name="btn_Enviar" value="Enviar" class="sendButton">
+                            <input type="submit" name="btn_Enviar" value="Enviar" class="sendButton btnContato">
                         </form>
                     </div>
             </div>
         </div>
-    </div> 
+    </div>
+    <div id="abrirModalSobre" class="modal">
+        <a href="#fechar" title="Fechar" class="fechar">X</a>
+        
+        <div class="conteudoModalProdutos">
+
+            <div class="atualizarSobre">
+                <h1>Atualizar Sobre</h1>          
+                <form action="../model/updateCategoria.php" method="post">
+                    <textarea name="txtcomentario" cols="53" rows="3" data-ls-module="charCounter" required ><?=$sobre?></textarea>
+                    
+                    <button class="btnSalvar btnItem">Atualizar</button>
+                </form>
+            </div>
+        </div>
+    </div>
     <div id="abrirModalEditarCategoria" class="modal">
         <a href="#fechar" title="Fechar" class="fechar">X</a>
         
@@ -1036,7 +1146,7 @@ if(isset($_GET['modo4'])){
             </div>
         </div>
     </div>
-     <script src="js/cep.js"></script>          
+    <script src="js/cep.js"></script>          
     <script src="js/mascaraCelular.js"></script>
     <script src="js/modal.js"></script>
     <script src="js/mascaraCpf.js"></script>

@@ -1,16 +1,16 @@
 function mascara_cpf (){
-    const cpf = document.getElementById('cpf')
-    if(cpf.value.length == 3 || cpf.value.length == 7){
-        cpf.value += "."
-    } else if (cpf.value.length == 11) {
-        cpf.value += "-"
+    const cpf1 = document.getElementById('cpf_register')
+    const cpf2 = document.getElementById('cpf_update')
+
+    if(cpf1.value.length == 3 || cpf1.value.length == 7){
+        cpf1.value += "."
+    } else if (cpf1.value.length == 11) {
+        cpf1.value += "-"
     }
-}
-function mascara_cpf (){
-    const cpf = document.getElementById('cpf_update')
-    if(cpf.value.length == 3 || cpf.value.length == 7){
-        cpf.value += "."
-    } else if (cpf.value.length == 11) {
-        cpf.value += "-"
+
+    if(cpf2.value.length == 3 || cpf2.value.length == 7){
+        cpf2.value += "."
+    } else if (cpf2.value.length == 11) {
+        cpf2.value += "-"
     }
 }
