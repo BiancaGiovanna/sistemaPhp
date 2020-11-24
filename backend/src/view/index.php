@@ -135,7 +135,35 @@ if(isset($_GET['modo5'])){
         }
     }
 }
+if(isset($_GET['modo6'])){
+    if(strtoupper($_GET['modo6']) == "CONSULTAR"){
+        if(isset($_GET['id'])&& $_GET['id'] != ""){
+            $id = $_GET['id'];
 
+            session_start();
+
+            $_SESSION['id'] = $id;
+
+            $sql = "select tblprodutos.*, tblsubcategoria.nomesub from tblprodutos, tblsubcategoria
+            where tblprodutos.idProduto = tblsubcategoria.idSubcategoria";
+
+            $select = mysqli_query($conex, $sql);
+
+            if ($rsProdutos = mysqli_fetch_assoc($select)) {
+
+                $foto = $rsProdutos ['foto'];
+                $nomeProduto = $rsProdutos ['nomeProduto'];
+                $descricao = $rsProdutos ['descricao'];
+                $preco = $rsProdutos ['preco'];
+                $desconto = $rsProdutos ['desconto'];
+                $precoFinal = $rsProdutos ['precoFinal'];
+                $destaque = $rsProdutos ['destaque'];
+                $statusProduto = $rsProdutos ['statusProduto'];
+                $subcategoria = $rsProdutos ['nomesub'];
+            }
+        }
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -447,55 +475,92 @@ if(isset($_GET['modo5'])){
                             </table>
                             
                         </div>
-                        <div class="caixaCadastroProduto">
-                        <form name="frmCadastroProdutos" method="POST" action="../site/bd/categorias/inserirProdutos.php">
-                                    <table class="tblProdutos">
+                        <div class="caixaCadastroProduto tblProdutoscadastroProdutos">
+                        <form name="frmCadastroProdutos" method="POST" action="../model/insertProduto.php" enctype="multipart/form-data">
+                        <table class="tblProdutos ">
                                         <tr>
                                             <td class="tblProdutosTitulo" colspan="2">
-                                                <h1>Produtos</h1>
+                                                <h1>Cadastro de produtos</h1>
                                             </td>
                                         </tr>
                                         <tr class="tblProdutosLinha">
-                                            <td class="tblProdutosColunaFixa"> 
-                                                Nome:
+                                            <td class="tblProdutosColuna"> 
+                                                Foto do Produtos:
                                             </td>
-                                            <td class="tblProdutosColuna">
-                                                <input type="text" name="txtName" value="" placeholder="Ex. Teclado Mecanico">
+                                            <td class="tblProdutosColunaFixa"> 
+                                                <input name="fleFoto" type="file" id="fleFoto" accept=".png, .jpg, .jpeg">
                                             </td>
                                         </tr>
                                         <tr class="tblProdutosLinha">
+                                            <td class="tblProdutosColuna"> 
+                                                Nome do Produto:
+                                            </td>
                                             <td class="tblProdutosColunaFixa"> 
+                                                <input name="txtnome" type="text" id="txtnome" required>
+                                            </td>
+                                        </tr>
+                                        <tr class="tblProdutosLinha">
+                                            <td class="tblProdutosColuna"> 
                                                 Descrição:
                                             </td>
-                                            <td class="tblProdutosColuna">
-                                                <input type="text" name="txtDescricao" value="" placeholder="Ex. Teclado mecanico com swtch azul">
+                                            <td class="tblProdutosColunaFixa"> 
+                                                <input name="txtdescricao" type="text" id="txtdescricao" required>
                                             </td>
                                         </tr>
                                         <tr class="tblProdutosLinha">
-                                            <td class="tblProdutosColunaFixa"> 
+                                            <td class="tblProdutosColuna"> 
                                                 Preço:
                                             </td>
-                                            <td class="tblProdutosColuna">
-                                                <input type="text" name="txtPreco" value="">
+                                            <td class="tblProdutosColunaFixa"> 
+                                                <input name="txtpreco" type="text" id="txtpreco" required>
                                             </td>
                                         </tr>
                                         <tr class="tblProdutosLinha">
-                                            <td class="tblProdutosColunaFixa"> 
+                                            <td class="tblProdutosColuna"> 
                                                 Desconto:
                                             </td>
-                                            <td class="tblProdutosColuna">
-                                                <input type="radio" name="rdoDestaque" value="S">Sim
-                                                <input type="radio" name="rdoDestaque" value="N">Não <br/>
-                                                <input type="text" id="desconto" name="txtDesconto" placeholder="Desconto em %" value="">
+                                            <td class="tblProdutosColunaFixa">
+                                                <select name="sltdesconto" id="">
+                                                    <option value="">Selecione o desconto </option>
+                                                    <option value="0"> 0% </option>
+                                                    <option value="10"> 10% </option>
+                                                    <option value="20"> 20% </option>
+                                                    <option value="30"> 30% </option>
+                                                    <option value="40"> 40% </option>
+                                                    <option value="50"> 50% </option>
+                                                    <option value="60"> 60% </option>
+                                                    <option value="70"> 70% </option>
+                                                    <option value="80"> 80% </option>
+                                                    <option value="90"> 90% </option>
+                                                    <option value="100"> 100% </option>
+                                                    
+                                                </select>
                                             </td>
                                         </tr>
+                                        
                                         <tr class="tblProdutosLinha">
-                                            <td class="tblProdutosColunaFixa">
-                                                Destaque:
+                                            <td class="tblProdutosColuna"> 
+                                               SubCategoria:
                                             </td>
-                                            <td class="tblProdutosColuna">
-                                                <input type="radio" name="rdoDestaque" value="S">Sim
-                                                <input type="radio" name="rdoDestaque" value="N">Não
+                                            <td class="tblProdutosColunaFixa"> 
+                                                <select name="sltsubcategoria" id="">
+                                                    <option value=""> Selecione uma Sub-Categoria</option>
+
+                                                        <?php
+                                                        $sql = "select * from tblsubcategoria";
+
+
+                                                        $select = mysqli_query($conex, $sql);
+                                                        while($rsProdutos = mysqli_fetch_assoc($select)){
+
+                                                            
+                                                        ?>
+                                                            <option value="<?=$rsProdutos['idSubcategoria']?>"> <?=$rsProdutos['nomesub'];?> </option>
+                                                    
+                                                        <?php
+                                                            }
+                                                        ?>
+                                                </select>
                                             </td>
                                         </tr>
                                         <tr class="tblProdutosLinha">
@@ -510,13 +575,13 @@ if(isset($_GET['modo5'])){
                             <table class="tblNossasLojas">
                                 <tr>
                                     <td class="tblNossasLojasTitulo" colspan="7">
-                                        <h1>Dados de Nossas Lojas</h1>
+                                        <h1>Tabela de Produtos </h1>
                                     </td>
                                 </tr>
                                 <tr class="tblNossasLojasLinha">
                                     <td class="tblNossasLojasColunaFixa"> Nome </td>
                                     <td class="tblNossasLojasColunaFixa"> Descrição </td>
-                                    <td class="tblNossasLojasColunaFixa"> Preço </td>
+                                    <td class="tblNossasLojasColunaFixa"> Preço Final </td>
                                     <td class="tblNossasLojasColunaFixa"> Destaque </td>
                                     <td class="tblNossasLojasColunaFixa"> Promoção </td>
                                     <td class="tblNossasLojasColunaFixa"> Foto </td>
@@ -524,32 +589,36 @@ if(isset($_GET['modo5'])){
                                     <td class="tblNossasLojasColunaFixa"> Opcões </td>
                                 </tr>
                                 <?PHP 
-                                    $sql = "select * from tbllojas";
+                                    $sql = "select * from tblprodutos";
 
                                     $select = mysqli_query($conex, $sql);
                                             
                                             
-                                    while($rsloja= mysqli_fetch_assoc($select))
+                                    while($rsprodutos= mysqli_fetch_assoc($select))
                                         {  
                                 ?>
                                 <tr class="tblNossasLojasLinha">
-                                    <td class="tblNossasLojasColuna">  </td>
-                                    <td class="tblNossasLojasColuna"> <img src="" class="photo"> </td>
-                                    <td class="tblNossasLojasColuna">  </td>
-                                    <td class="tblNossasLojasColuna">  </td>
-                                    <td class="tblNossasLojasColuna">  </td>
-                                    <td class="tblNossasLojasColuna">  </td>
+                                    <td class="tblNossasLojasColuna"> <?=$rsprodutos['nomeProduto']?> </td>
+                                    <td class="tblNossasLojasColuna"> <?=$rsprodutos['descricao']?> </td>
+                                    <td class="tblNossasLojasColuna"> <?=$rsprodutos['precoFinal']?> </td>
+                                    <td class="tblNossasLojasColuna"> 
+                                                    <a href="../model/enableDisableDestque.php?modo=status&id=<?=$rsprodutos['idProduto']?>&status=<?=$rsprodutos['destaque']?>">
+                                                        <img src="image/icon/<?=$rsprodutos['destaque']?>.png" alt="enable/disable" title="ativar e desativar" class="editar">
+                                                    </a>
+                                    </td>
+                                    <td class="tblNossasLojasColuna"> <?=$rsprodutos['desconto']?> </td>
+                                    <td class="tblNossasLojasColuna"> <img src="../photoProdutos/<?=$rsprodutos['foto']?>" class="photo"> </td>
                                     
                                     <td class="tblNossasLojasColuna"> 
-                                    <a href="../model/deleteStore.php?modo=excluir&id=<?=$rsloja['idlojas']?>&foto=<?=$rsloja['foto']?>" onclick="return confirm('Deseja realmente excluir esse Registro?')">
+                                    <a href="../model/deleteProduto.php?modo=excluir&id=<?=$rsprodutos['idProduto']?>&foto=<?=$rsprodutos['foto']?>" onclick="return confirm('Deseja realmente excluir esse Registro?')">
                                                         <img src="image/icon/delete.png" alt="Excluir" title="excluir" class="excluir">
                                                     </a>
-                                                    <a href="index.php?modo4=consultar&id=<?=$rsloja['idlojas']?>#abrirModalLojas" id="mostra_attUsuario"> 
+                                                    <a href="index.php?modo6=consultar&id=<?=$rsprodutos['idProduto']?>#abrirModalProduto" id="mostra_attUsuario"> 
                                                     <img src="image/icon/edit.svg" alt="edit" class="editar" title="Editar">
                                                     </a>
 
-                                                    <a href="../model/enableDisableStore.php?modo=status&id=<?=$rsloja['idlojas']?>&status=<?=$rsloja['statusLoja']?>">
-                                                    <img src="image/icon/<?=$rsloja['statusLoja']?>.png" alt="enable/disable" title="ativar e desativar" class="editar">
+                                                    <a href="../model/enableDisableProduto.php?modo=status&id=<?=$rsprodutos['idProduto']?>&status=<?=$rsprodutos['statusProduto']?>">
+                                                    <img src="image/icon/<?=$rsprodutos['statusProduto']?>.png" alt="enable/disable" title="ativar e desativar" class="editar">
                                                     </a>
                                     </td>
                                     
@@ -1024,6 +1093,95 @@ if(isset($_GET['modo5'])){
                 </div>
         </div>
     </div> 
+    <div id="abrirModalProduto" class="modal">
+        <a href="#fechar" title="Fechar" class="fechar">X</a>
+        
+        <div class="conteudoModal">
+            <div class="caixaCadastro">
+                <form name="frmloja" method="post" action="../model/updateProduto.php" enctype="multipart/form-data">
+                    <div class="entreEmContato">
+                        <h1>Atualizar dados do Produtos</h1>
+                    </div>
+                        <div class="areaTitle-contato">
+                            <div class="contactUs">
+                                Foto do Produtos:            
+                            </div>
+                            <div class="contactUs">
+                            Nome do Produto:
+                            </div>
+                            
+                            <div class="contactUs">
+                            Descrição:     
+                            </div>
+                            <div class="contactUs">
+                            Preço:  
+                            </div>
+                            <div class="contactUs">
+                            Desconto:  
+                            </div>
+                            <div class="contactUs">
+                            SubCategoria:  
+                            </div>
+                        </div>
+                        <div class="areaForm-contato">
+                            <div class="contactUs">
+                                <input name="fleFoto" value="<?=$foto?>" type="file" id="fleFoto" accept=".png, .jpg, .jpeg"/>
+                            </div>
+                            <div class="contactUs">
+                                <input name="txtnome" value="<?=$nomeProduto?>"type="text" id="txtnome" required>
+                            </div>
+                            <div class="contactUs">
+                                <input name="txtdescricao" value="<?=$descricao?>" type="text" id="txtdescricao" required>
+                            </div>
+                            <div class="contactUs">
+                                <input name="txtpreco" value="<?=$preco?>" type="text" id="txtpreco" required>
+                                            
+                            </div>
+                            <div class="contactUs">
+                            <select name="sltdesconto"  id="">
+                                                    <option>R$<?=$desconto?></option>
+                                                    <option value="0">0%</option>
+                                                    <option value="10"> 10% </option>
+                                                    <option value="20"> 20% </option>
+                                                    <option value="30"> 30% </option>
+                                                    <option value="40"> 40% </option>
+                                                    <option value="50"> 50% </option>
+                                                    <option value="60"> 60% </option>
+                                                    <option value="70"> 70% </option>
+                                                    <option value="80"> 80% </option>
+                                                    <option value="90"> 90% </option>
+                                                    <option value="100"> 100% </option>
+                                                    
+                                                </select>                           
+                                                </div>
+                            <div class="contactUs">
+                                <select name="sltsubcategoria" id="">
+                                                    <option> <?=$subcategoria?> </option>
+
+                                                        <?php
+                                                        $sql = "select * from tblsubcategoria";
+
+
+                                                        $select = mysqli_query($conex, $sql);
+                                                        while($rsProdutos = mysqli_fetch_assoc($select)){
+
+                                                            
+                                                        ?>
+                                                            <option value="<?=$rsProdutos['idSubcategoria']?>"> <?=$rsProdutos['nomesub'];?> </option>
+                                                    
+                                                        <?php
+                                                            }
+                                                        ?>
+                                </select>
+                            </div>
+                            
+                            
+                            <input type="submit" name="btn_Enviar" value="Enviar" class="sendButton btnContato">
+                        </form>
+                    </div>
+            </div>
+        </div>
+    </div>
     <div id="abrirModalLojas" class="modal">
         <a href="#fechar" title="Fechar" class="fechar">X</a>
         

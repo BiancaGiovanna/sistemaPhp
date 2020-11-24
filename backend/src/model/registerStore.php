@@ -12,7 +12,7 @@
 
     }
     $nomeLoja = (string) null;
-    $foto = (string) "no-photo.png";
+    $foto = (string) "no-photo.jpg";
     $cep = (string) null;
     $rua = (string) null;
     $bairro = (string) null;

@@ -1,14 +1,16 @@
 <?php 
     require_once('../controllers/config.php');
 
+
     require_once('../controllers/conexaoMysql.php');
 
     require_once('./uploadPhotoProduto.php');
 
     if(!$conex = conexaoMysql()){
-        echo("<script> alert('".ERRO_CONEX_BD_MYSQL."'); </script>");
-    }
 
+        echo("<script> alert('".ERRO_CONEX_BD_MYSQL."'); </script>");
+
+    }
     $foto = (string) "no-photo.jpg";
     $nomeProduto = (string) null;
     $descricao = (string) null;
@@ -20,7 +22,6 @@
     $precoFinal = (integer) 0;
     //********************
     $destaque = (string) 0;
-    $statusProduto = (integer) 0;
     $idSubcategoria = (string) null;
 
 
@@ -35,43 +36,37 @@
 
     $idSubcategoria = $_POST['sltsubcategoria'];
 
-    $sql = "
-    insert into tblprodutos 
-        (
-            foto, 
-            nomeProduto,
-            descricao, 
-            preco,
-            desconto,
-            precoFinal,
-            destaque,
-            idSubcategoria, 
-            statusProduto)
-        values 
-        (
-            '".$foto."', 
-            '".$nomeProduto."',
-            '".$descricao."', 
-            '".$preco."', 
-            '".$recebendoDesconto."',
-            '".$precoFinal."',
-            '".$destaque."' , 
-            '".$idSubcategoria."',
-            '".$statusProduto."')";
+    session_start();
 
-// echo ($sql);
-if(mysqli_query($conex, $sql)){
-    echo ("
-            <script>
-                alert('Produto inserido com sucesso!');
-                location.href = '../view/index.php';
-            </script>
-        ");
-}
-else
-    echo ("
-            <script>
-                alert('Favor verifique se voce preencheu todos os campos corretamente.');
-                location.href = '../view/index.php';
+    $sql = "update tblprodutos set
+                foto ='".$foto."', 
+                nomeProduto = '". $nomeProduto."',
+                descricao = '". $descricao."', 
+                preco = '". $preco."',
+                desconto = '". $desconto."',
+                precoFinal = '". $precoFinal."',
+                idSubcategoria = '". $idSubcategoria."'
+                where idProduto = ".$_SESSION['id'];
+    
+    unset($_SESSION['id']);
+
+// echo($sql);
+    if (mysqli_query($conex, $sql)){
+        echo("
+                <script>
+                    alert('Produto atualizado com sucesso!');
+                    location.href = '../view/index.php';
                 </script>
+            ");
+            }
+    else
+        echo("
+            <script>
+                alert('Erro ao enviar os dados.');
+                location.href = '../view/index.php';
+                window.history.back();
+            </script>
+            
         ");
+
+

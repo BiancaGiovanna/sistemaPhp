@@ -636,6 +636,9 @@ select{
     height: auto;
     border-radius: 10px;
 }
+.tblProdutoscadastroProdutos { 
+    margin-top: 150px;
+}
 
 .tblProdutosTitulo {
     width: 100%;
@@ -744,6 +747,7 @@ select{
 .photo{
     width: 50px;
     height: 50px;
+    border-radius: 10px;
 }
 .atualizarSobre{
     display: flex;

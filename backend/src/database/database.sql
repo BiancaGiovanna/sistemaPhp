@@ -41,15 +41,22 @@ create table tbluser(
     references tblgeneros(idgeneros)
 );
 create table tblprodutos(
-	idprodutos int not null auto_increment primary key,
-    nome varchar(50) not null,
-    descricao varchar(50) not null,
-    preco decimal(12) not null,
+	idProduto int not null auto_increment primary key,
+    foto varchar(40) not null,
+    nomeProduto varchar(80) not null,
+    descricao varchar(100),
+    preco int(7) not null,
+    desconto int(5),
+    precoFinal int(7),
     destaque boolean,
-    promocao boolean,
-    imagens varchar (32) not null,
-    statusProduto boolean
+    statusProduto boolean,
+    idSubcategoria int(30) not null,
+    constraint Fk_subcategoria_produtos
+    foreign key (idSubcategoria)
+    references tblsubcategoria(idSubcategoria)
 );
+ALTER TABLE tblprodutos
+ALTER COLUMN  descricao datatype;
 create table tblcategoria(
 	idCategoria int not null auto_increment primary key,
     nome varchar(40) not null,
@@ -98,4 +105,3 @@ values ('Feminino', 'F'),
 		('Masculino', 'M'),
         ('Outro', 'O');
         
-                       

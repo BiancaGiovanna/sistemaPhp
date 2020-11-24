@@ -2,7 +2,9 @@ nav{
     position: fixed;
     margin-left: 1190px; 
 }
-
+.bold{
+    font-weight: bold;
+}
 .btnSociais{
     width: 80px;
     height: 80px;
@@ -151,15 +153,18 @@ nav{
 }
 .vendaProduto{
     width: 300px;
-    height: 425px;
+
+    min-height: 425px;
+    height: auto;
     margin-top: 15px;
     margin-left: 15px;
     border-radius: 10px;
     border: 1px solid #000000;
 }
 .descProduto{
-    width: 100px;
-    height: 90px;
+    width: 250px;
+    min-height: 90px;
+    height: auto;
     margin-bottom: 35px;
     margin-left: 10px;
     font-size: 2.2rem;
@@ -167,7 +172,7 @@ nav{
 
 .imageProduto{
     width: 100%;
-    height: 50%;
+    height: 45%;
     display: flex;
     align-items: center;
     justify-content: center;

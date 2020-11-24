@@ -118,47 +118,81 @@
         <div class="centerObject conteudo ">
             <div class="divProdutos">
                 <div id="lateralMenu">
+                <?php
+
+                            $sql = "select * from tblCategoria where statusCategoria = 1
+                                    ;";
+                               
+                            $select = mysqli_query($conex, $sql);
+                            
+                            while($rsCategoria = mysqli_fetch_assoc($select))
+                            {
+                    ?>
                     <div class="items"> 
-                        Item 1
+                    
+                        <a href=""><?=$rsCategoria['nome']?>
                         <div class="subItems">
                             <ul>
-                                <li>Sub1</li>
-                                <li>Sub2</li>
+                            <?php
+                                    $sqlSub = "select tblSubcategoria.*,
+                                                statusSubcategoria = 1 
+                                                from tblSubcategoria
+                                                where statusSubcategoria = 1 and tblSubcategoria.idCategoria = " .$rsCategoria['idCategoria']  ;
+
+                                
+                                    $selectSub = mysqli_query($conex, $sqlSub);
+                                    
+                                    while($rsSubCategoria = mysqli_fetch_assoc($selectSub))
+                                    {
+                                ?>
+                                
+                                    <li><a href=""></a><?=$rsSubCategoria['nomesub']?></li>
+                                    
+                                <?php
+                                    }
+                                ?>
+                                
                             </ul>
                         </div>
                     </div>
-                    <div class="items"> 
-                        Item 2 
-                        <div class="subItems">
-                            <ul>
-                                <li>Sub1</li>
-                                <li>Sub2</li>
-                                <li>Sub3</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                    <?php
+                        }
+                    ?>
+                </div> 
                 
                 <div class="divPesquisa">
                         <div class="barraPesquisa">
                             <span>Pesquisa:</span><input type="text" id="pesquisa" name="pesquisa"> 
                             <input type="submit" value="Buscar" id="btnBuscar">
                         </div>
-                        <h1>Produtos encotrados XXX</h1>
+                        <h1>Produtos encotrados</h1>
                         <div class="listaProdutosLinha">
+                        <?php
+                            $sql = "select * from tblProdutos
+                                    where statusproduto = 1
+                                    ORDER BY RAND()";
+                            $select = mysqli_query($conex, $sql);
+                            
+                            while($rsProdutos = mysqli_fetch_assoc($select))
+                            {
+
+                        ?>
                             <div class="vendaProduto">
                                 <div class="imageProduto centerObject">
-                                    <img src="../src/image/produto/headsetzeus.jpg" alt="">
+                                    <img src="../../backend/src/photoProdutos/<?=$rsProdutos['foto']?>" alt="foto-produto">
                                 </div>
                                 <div class="descProduto">
-                                    Nome: 
+                                    <span class="bold">Nome:</span>  <?=$rsProdutos['nomeProduto']?>
                                     <br>
-                                    Descrição:
+                                    <span class="bold">Descrição:</span> <?=$rsProdutos['descricao']?>
                                     <br>
-                                    Preço:<span class="preco">R$450</span> 
+                                    <span class="bold">Preço:</span>     <span class="preco"><?=$rsProdutos['precoFinal']?></span> 
                                 </div>
                                 <button class="btnSaibaMais">Saiba Mais</button>
                             </div>
+                           <?php
+                            }
+                           ?> 
                             
                         </div>
                 </div>
@@ -169,14 +203,24 @@
         </div>
         <div class="centerObject conteudo ">
             <div class="divProdutosDestaque">
+                <?php
+                    $sql = "select * from tblProdutos where destaque = 1 and statusProduto =1";
+
+                    $select = mysqli_query($conex, $sql);
+                            
+                    while($rsProdutos = mysqli_fetch_assoc($select))
+                        {
+                ?>
                 <div class="produtoDestaque">
                     <div class="imageProdutoDestaque centerObject">
-                        <img src="../src/image/produto/vatapro.jpg" alt="">
+                        <img src="../../backend/src/photoProdutos/<?=$rsProdutos['foto']?>" alt="">
                     </div>
-                    <span>Nome do produto</span>
+                    <span><?=$rsProdutos['nomeProduto']?></span>
                     <button class="btnSaibaMais">Saiba Mais</button>
                 </div>
-               
+               <?php
+                }
+               ?>
             </div>
         </div>
 
@@ -186,23 +230,34 @@
         <div class="centerObject conteudo ">
             <div class="divprodutoPromocao">
                 <div class="promocaoline">
+                <?php
+                    $sql = "select * from tblProdutos where desconto >= 1 and statusProduto =1";
+
+                    $select = mysqli_query($conex, $sql);
+                            
+                    while($rsProdutos = mysqli_fetch_assoc($select))
+                        {
+                ?>
                     <div class="produtoPromocao">
                         <div class="imageProduto centerObject">
-                            <img src="../src/image/produto/monitorgamerRedragon.jpg" alt="">
+                            <img src="../../backend/src/photoProdutos/<?=$rsProdutos['foto']?>" alt="">
                         </div>
                         <span class="alinhamentoPromocao">
-                        Nome:
+                        <?=$rsProdutos['nomeProduto']?>
                         </span>
                         <br>
                         <span class="alinhamentoPromocao">
                           
-                            <span class="precoAntigo">de R$ xxxx</span>
-                            <span class="precoNegrito">por R$ xxxx</span>
+                            <span class="precoAntigo">de R$ <?=$rsProdutos['preco']?></span>
+                            <span class="precoNegrito">por R$ <?=$rsProdutos['precoFinal']?></span>
                         </span>
                         <br>
                         
                         <button class="btnSaibaMais">Saiba Mais</button>
                     </div>
+                    <?php
+                        }
+                    ?>
                 </div>
 
 
@@ -220,6 +275,7 @@
         ?>
         <div class="centerObject conteudo" id="empresa">
             <div id="textoEmpresa" >
+                    
                 <p><?=$rsSobre['sobre']?></p>
                 <?php 
                 
