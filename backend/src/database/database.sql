@@ -1,4 +1,4 @@
-
+/*Script de criação de tabela*/
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password
 BY 'bcd127';  
 
@@ -55,8 +55,6 @@ create table tblprodutos(
     foreign key (idSubcategoria)
     references tblsubcategoria(idSubcategoria)
 );
-ALTER TABLE tblprodutos
-ALTER COLUMN  descricao datatype;
 create table tblcategoria(
 	idCategoria int not null auto_increment primary key,
     nome varchar(40) not null,
@@ -104,4 +102,6 @@ insert into tblgeneros(genero, sigla)
 values ('Feminino', 'F'),
 		('Masculino', 'M'),
         ('Outro', 'O');
+        
+
         
